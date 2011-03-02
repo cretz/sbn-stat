@@ -29,6 +29,7 @@ public class Post implements Serializable {
     private Timestamp date;
     private String title;
     private String url;
+    private int recommendationCount;
 
     public long getId() {
         return id;
@@ -84,5 +85,13 @@ public class Post implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+    
+    public int getRecommendationCount() {
+        return recommendationCount;
+    }
+    
+    public void setRecommendationCount(int recommendationCount) {
+        this.recommendationCount = recommendationCount;
     }
 }

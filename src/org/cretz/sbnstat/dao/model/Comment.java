@@ -25,8 +25,10 @@ public class Comment implements Serializable {
     private long id;
     private long sbnId;
     private Comment parent;
+    private Comment topLevelParent;
     private User user;
     private Post post;
+    private int depth;
     private String subject;
     private String contents;
     private int recommendationCount;
@@ -55,6 +57,14 @@ public class Comment implements Serializable {
     public void setParent(Comment parent) {
         this.parent = parent;
     }
+    
+    public Comment getTopLevelParent() {
+        return topLevelParent;
+    }
+    
+    public void setTopLevelParent(Comment topLevelParent) {
+        this.topLevelParent = topLevelParent;
+    }
 
     public User getUser() {
         return user;
@@ -70,6 +80,14 @@ public class Comment implements Serializable {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+    
+    public int getDepth() {
+        return depth;
+    }
+    
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 
     public String getSubject() {
