@@ -1,0 +1,1122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="medium" content="blog" />
+  <title>FanPosts - Lone Star Ball - For Texas Rangers Fans</title>
+  
+
+
+
+  <link href="http://cdn0.sbnation.com/stylesheets/universal_screen.v00f06b8b5b20e764.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://cdn1.sbnation.com/stylesheets/community_new_all.v05351f350361f742.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="http://cdn3.sbnation.com/stylesheets/blogs/blog-print.v777cf8a.css" media="print" rel="stylesheet" type="text/css" />
+
+  <!--[if lte IE 7]>
+    <link href="http://cdn3.sbnation.com/stylesheets/shared/ie7-hacks.v777cf8a.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://cdn2.sbnation.com/stylesheets/blogs/ie-hacks.v777cf8a.css" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+  <!--[if lte IE 6]>
+    <link href="http://cdn2.sbnation.com/stylesheets/shared/ie6-hacks.vd00358f937b0dfe1.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://cdn1.sbnation.com/stylesheets/blogs/ie6-hacks.v9e2ba1ec05749cdf.css" media="screen" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+  
+  
+  <style type="text/css"><!-- body{background-image:url(http://cdn3.sbnation.com/community_logos/31348/top_fade_base.png);}.ut-logged-out ul li.start a{background-image:url(http://cdn0.sbnation.com/community_logos/30117/lonestar-fave.png);}.nav-head li a:hover{background-color:#1B4885;}.social-promo{border-color:#1B4885;}.container{background-color:#0D1E3B;}.pane h3,.entries h3.subtitle{background-color:#002463;border-color:#002463;}.nav-head-div{background-color:#C1111E;}.gcolumns .col-side #thumbs a:hover img{border-color:#CA3540;}.col-side .sports_data_widget .pane-tabs li{background-color:#3D6397;}.events,#modal_container .sports_data_widget,.col-side .sports_data_widget,.col-side .sports_data_widget .pane-tabs li a.active,.col-side .sports_data_widget .pane-tabs li a.active:visited,.col-side .sports_data_widget .pane-tabs li a.active:hover,.col-side .sports_data_widget .pane-tabs li a.active:active{background-color:#1B4885;}* html .col-side .sports_data_widget .zebra tr.even td,* html .col-side .sports_data_widget .zebra tr.even td.td-first,* html .col-side .sports_data_widget .zebra tr.even td.td-last,* html .sdw-rec-score p span,* html .sdw-rec-score p,* html .col-side .pane .next_game,* html .pane .foot .link-standings,* html .pane .foot .link-standings a{background-color:#3D6397;}a,a:link,a:visited,a:hover,a:active,a:focus,.entries .sports_data_widget a,.entries .sports_data_widget a:link,.entries .sports_data_widget a:visited,.entries .sports_data_widget a:hover,.entries .sports_data_widget a:active,.entries .sports_data_widget a:focus,.title-bar h1 a,.title-bar h1 a:visited{color:#1B4885;}#yahoo_action_bar span.y-addtomy,.user_tools .user-tease-body span{border-color:#6F6F6F;}#yahoo_action_bar span.y-addtomy a,.user_tools .user-tease-body span a,#gallery-mode a:hover{background-color:#1B4885;}.sports_data_widget .blog-hover-menu span a,.sports_data_widget .blog-hover-menu span a:link,.sports_data_widget .blog-hover-menu span a:visited,.sports_data_widget .blog-hover-menu span a:hover{color:#1B4885!important;}.pane .button,.entry-body .fancon_poll .button,.poll-box .button,#newsletter-form .submit{background-color:#1B4885!important;color:#fff;cursor:pointer;}.pane .fan-con-button:hover,.pane .button-search:hover,.entry-body .fancon_poll .fan-con-button:hover,.user-tease-body span a:hover{background-color:#C1111E!important;}.byline a:hover,.footline a:hover,.foot a:hover,.entries .sports_data_widget .foot a:hover,.sports_data_page #col-content a:hover{color:#fff!important;background-color:#1B4885!important;text-decoration:none;}.comment p.submit input,.search-pane .button{color:#1B4885;border-color:#1B4885;background:#eee;}.comment p.submit input:hover,.search-pane .button:hover{background:#1B4885;border-color:#1B4885;color:#fff;}.col-side .sports_data_widget a,.col-side .sports_data_widget a:visited,.col-side .sports_data_widget a:hover,.col-side .sports_data_widget a:active,.col-side .sports_data_widget a:focus,.events a,.events a:visited,.events a:hover,.events a:active,.events a:focus,.col-side .sports_data_widget tbody tr:hover div a,.col-side .sports_data_widget tbody tr:hover div a:visited{color:#D8C383;}.col-side .sports_data_widget tbody tr:hover a,.col-side .sports_data_widget tbody tr:hover a:visited{color:#1B4885;}.fanshot,blockquote,div.blockquote,.col-content .entries .sports_data_widget table:hover tr:hover,.col-content .entries .sports_data_widget table:hover tr:hover td,.col-content .entries table.rowhover:hover tr:hover,.col-content .entries table.rowhover:hover tr:hover td,.cform,.search-pane,.entries .sort-by-listview,.nav-scope .active,.social-promo,.ut-logged-out ul li:hover,.ut-logged-in h4,.byline2 a,.byline2 #by-menu ul{background-color:#C8C8C8!important;}.ut-logged-out ul li,.ut-logged-in{background-color:#DEDEDE!important;}.list-set,.ut-logged-in ul.parent{border-color:#C8C8C8!important;}.nav-scope-fs .active{background-color:#fff!important;}.col-content .entries .cform table:hover tr:hover,.col-content .entries .cform table:hover tr:hover td{background-color:none!important;}.fanshot p.footline,.nav-scope{background-color:#6F6F6F!important;}.results-bar,.nav-scope-fs,.entries .zebra .even td{background-color:#DEDEDE!important;}.list-set p.even{background-color:#EDEDED!important;}blockquote,div.blockquote,.cform,.cform input.textfield,.cform input[type="text"],.cform input[type="password"],.cform textarea{border-color:#6F6F6F!important;}#fancon-slider-handle{background:transparent url(http://cdn3.sbnation.com/community_logos/31352/fancon_gripper.png) no-repeat;}--></style>  
+
+
+  <script src="http://cdn1.sbnation.com/javascripts/universal.vaf6f2de11f04a6e6.js" type="text/javascript"></script>
+
+
+
+
+
+  <script type="text/javascript">
+    FastInit.addOnLoad(function(){
+      SBN.activateRedStarMenus();
+      
+    });
+    if(typeof(OpenxAdParams) == 'undefined') { OpenxAdParams = {} };
+OpenxAdParams.sbnation_domain = 'lonestarball.com';
+OpenxAdParams.sbnadteam = 'Rangers';
+OpenxAdParams.sbnadleague = 'mlb';
+
+  </script>
+
+  <meta name="verify-v1" content="tVZrmAVAdy8IRDF4NIjlhbN+V/H+9CidMoB2sHhDQH8=" />
+
+<meta name="msvalidate.01" content="056B9264410713ACCE15106EDEE208BA" />
+
+<META name="y_key" content="5f2c205a2361a0fb">
+
+  
+    <link rel="shortcut icon" href="http://cdn0.sbnation.com/community_logos/30117/lonestar-fave.png" />
+  
+
+  <meta name="description" content="Your best source for quality Texas Rangers news, rumors, analysis, stats and scores from the fan perspective." />
+
+  <!-- rss -->
+    <link rel="alternate" type="application/atom+xml" title="Lone Star Ball feed" href="/atom/" />
+
+    <link rel="alternate" type="application/rss+xml" title="Lone Star Ball FanPosts" href="/rss/fanposts" />
+    <link rel="alternate" type="application/rss+xml" title="Lone Star Ball FanShots" href="/rss/fanshots" />
+
+    
+    
+  </head>
+
+  <body id="blog-interior" class="blog-layout wide_layout blog-interior layout-single ">
+  
+    <script type="text/javascript">
+  var _gaq = _gaq || [];  
+
+  _gaq.push(
+    ['_setAccount', 'UA-1367699-1'],
+    ['_setDomainName', 'none'],
+        
+      ['t1._setAccount', 'UA-16185708-1'],
+      ['t1._trackPageview'],
+          
+    ['_setAllowLinker', true],
+    ['_trackPageview']
+  );
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+  })();
+</script>
+  
+
+  <script type="text/javascript">
+  var clicky_custom = {};
+  clicky_custom.href = 'http://www.lonestarball.com/fanposts/recent';
+  var clicky = { log: function(){ return; }, goal: function(){ return; }};
+  var clicky_site_id = 209399;
+  (function() {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = ( document.location.protocol == 'https:' ? 'https://static.getclicky.com' : 'http://static.getclicky.com' ) + '/js';
+    ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+  })();
+  </script>
+
+
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "7976662" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=7976662&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+
+    
+    
+
+  <div id="jump-nav">
+    <h1><a href="http://www.lonestarball.com/">Lone Star Ball</a>: An SB Nation Community</h1>
+    <p>Navigation: Jump to content areas:</p>
+
+    <ul>
+      <li><a href="#netbar">Network Bar &amp; Login</a></li>
+      <li><a href="#navhead">Section Navigation</a></li>
+      
+      <li><a href="#content">Main Blog Content</a></li>
+      <li><a href="#col2">Secondary Sidebar: Links to Recent Stories, FanPosts and FanShots</a></li>
+      <li><a href="#masthead">Masthead</a></li>
+
+      
+    </ul><hr class="section" />
+  </div>
+
+    <div id="network_bar" class="net-bar clearfix">
+  <h2 class="hidden">Network Bar</h2>
+  <div class="nb-user-menu col">  
+    <span class="nb-span nb-sbn-logo"><a href="http://www.sbnation.com/" title="Visit SBNation.com" name="top">SB Nation</a></span>
+  
+    <span class="nb-span nb-profile "><a href="http://www.sbnation.com/users/booyakasha" title="View your profile"><img alt="4925254997_c3a515bd89_tiny" height="18" src="http://cdn3.sbnation.com/profile_images/327727/4925254997_c3a515bd89_tiny.jpg" width="18" /> booyakasha</a></span>
+
+    
+    <span class="nb-span nb-dashlink nb-dashlink-ed"><a href="/admin" title="My Dashboard"><img alt="My Dashboard" src="http://cdn1.sbnation.com/images/icons/user_tools/man-ed-on.v777cf8a.png" /></a></span>    
+    
+
+    <script type="text/javascript">
+        FastInit.addOnLoad(function(){
+          new HoverMenu("blogs_nav");
+    });
+    </script>
+  
+    <span class="nb-span nb-hover-link nb-blogs-nav" id="blogs_nav">My Blogs
+    <div id="blogs_nav_menu" class="nb-hover-menu  clearfix" style="display:none">
+      <h3 class="hidden">My Blogs</h3>       
+        
+          <div class="blog-nav-item blog-nav-fave clearfix">            
+        
+        
+        <h4><a href="http://www.defendingbigd.com/" title="Visit this Blog"><img alt="Defending Big D" src="http://cdn2.sbnation.com/community_logos/11254/dbd-tiny.jpg" /> Defending Big D</a></h4>
+            
+            
+      </div>  
+    
+          <div class="blog-nav-item blog-nav-fave clearfix">            
+        
+        
+        <h4><a href="http://www.lonestarball.com/" title="Visit this Blog"><img alt="Lone Star Ball" src="http://cdn3.sbnation.com/community_logos/367/lonestarball_s.gif" /> Lone Star Ball</a></h4>
+
+            
+            
+      </div>  
+    
+          <div class="blog-nav-item clearfix">          
+        
+        
+        <h4><a href="http://www.athleticsnation.com/" title="Visit this Blog"><img alt="Athletics Nation" src="http://cdn1.sbnation.com/community_logos/9/athleticsnation_s.gif" /> Athletics Nation</a></h4>
+            
+            
+              <p class="new-alert"><span>
+          330 Stories, 396 FanPosts, 169 FanShots
+          </span></p>
+        
+      </div>  
+    
+          <div class="blog-nav-item clearfix">          
+        
+        
+        <h4><a href="http://www.beyondtheboxscore.com/" title="Visit this Blog"><img alt="Beyond the Box Score" src="http://cdn2.sbnation.com/community_logos/483/beyondtheboxscore_s.gif" /> Beyond the Box Score</a></h4>
+
+            
+            
+              <p class="new-alert"><span>
+          211 Stories, 42 FanPosts, 128 FanShots
+          </span></p>
+        
+      </div>  
+    
+          <div class="blog-nav-item clearfix">          
+        
+        
+        <h4><a href="http://www.bigdsoccer.com/" title="Visit this Blog"><img alt="Big D Soccer" src="http://cdn2.sbnation.com/community_logos/30707/bigd-tiny.jpg" /> Big D Soccer</a></h4>
+            
+            
+              <p class="new-alert"><span>
+          119 Stories, 2 FanPosts, 67 FanShots
+          </span></p>
+        
+      </div>  
+    
+          <div class="blog-nav-item clearfix">          
+        
+        
+        <h4><a href="http://www.bloggingtheboys.com/" title="Visit this Blog"><img alt="Blogging The Boys" src="http://cdn3.sbnation.com/community_logos/1926/bloggingtheboys_s.gif" /> Blogging The Boys</a></h4>
+
+            
+            
+              <p class="new-alert"><span>
+          25 Stories, 18 FanPosts, 15 FanShots
+          </span></p>
+        
+      </div>  
+    
+          <div class="blog-nav-item clearfix">          
+        
+        
+        <h4><a href="http://www.halosheaven.com/" title="Visit this Blog"><img alt="Halos Heaven" src="http://cdn1.sbnation.com/community_logos/62/halosheaven_s.gif" /> Halos Heaven</a></h4>
+            
+            
+              <p class="new-alert"><span>
+          155 Stories, 137 FanPosts, 344 FanShots
+          </span></p>
+        
+      </div>  
+    
+          <div class="blog-nav-item clearfix">          
+        
+        
+        <h4><a href="http://www.lookoutlanding.com/" title="Visit this Blog"><img alt="Lookout Landing" src="http://cdn3.sbnation.com/community_logos/539/lookoutlanding_s.gif" /> Lookout Landing</a></h4>
+
+            
+            
+              <p class="new-alert"><span>
+          1 Story, 1 FanPost
+          </span></p>
+        
+      </div>  
+    
+          <div class="blog-nav-item clearfix">          
+        
+        
+        <h4><a href="http://www.mavsmoneyball.com/" title="Visit this Blog"><img alt="Mavs Moneyball" src="http://cdn2.sbnation.com/community_logos/1376/mavsmoneyball_s.gif" /> Mavs Moneyball</a></h4>
+            
+            
+              <p class="new-alert"><span>
+          15 Stories, 5 FanPosts, 11 FanShots
+          </span></p>
+        
+      </div>  
+    
+          <div class="blog-nav-item clearfix">          
+        
+        
+        <h4><a href="http://www.mccoveychronicles.com/" title="Visit this Blog"><img alt="McCovey Chronicles" src="http://cdn0.sbnation.com/community_logos/106/mccoveychronicles_s.gif" /> McCovey Chronicles</a></h4>
+
+            
+            
+              <p class="new-alert"><span>
+          132 Stories, 363 FanPosts, 574 FanShots
+          </span></p>
+        
+      </div>  
+    
+        <p class="more-link">
+          
+            <a href="http://www.sbnation.com/users/booyakasha">Your SB Nation Blogs</a>
+        </p>
+    </div>
+    </span><hr class="section" /><!-- closing nb-blogs-nav -->
+
+    
+  <!-- close left-col -->     
+  </div> 
+
+  
+  <div class="nb-span nb-log-menu col col-last">
+    <span class="nb-span nb-fbconnect">
+      
+        <a href="#" onclick="SBN.Facebook.Connect.initModal('http://www.sbnation.com/account/login_with_facebook?community_id=10&amp;from_network_bar=true&amp;return_to=http%3A%2F%2Fwww.lonestarball.com%2Ffanposts%2Frecent',{height:225,width:470}); return false;"><img alt="Login-facebook" src="http://cdn3.sbnation.com/images/icons/service/login-facebook.v777cf8a.gif" /></a>
+      
+     </span>
+    <span class="nb-log-out"><a href="http://www.sbnation.com/account/logout">Log Out</a></span>
+  </div>
+  
+  
+
+    
+  
+  <hr class="section" />
+
+</div>
+<div class="network-bar-shadow"></div>
+
+<div class="container clearfix">
+  <div id="logo" class="logo">
+    <a href="http://www.lonestarball.com/"><img alt="Lone Star Ball" src="http://cdn2.sbnation.com/community_logos/369/lonestarball.gif" /></a>
+  </div>
+  <div id="header" class="header clearfix"><a name="top"></a>
+    <div id="title-box" class="head-pane title-box">
+      
+
+
+      <h1 class="title"><a href="http://www.lonestarball.com/">Lone Star Ball</a> -</h1> <h2 class="tagline"><a href="http://www.lonestarball.com/">"I love that team, because all they do is show up and play baseball." -- RW</a></h2>
+
+    </div>
+    <hr class="section" /><!--  close #header -->
+  </div>
+
+  <div class="nav-head-div">
+    
+<ul id="nav-head" class="nav-head clearfix">
+  
+    <li class="first"><a href="http://www.lonestarball.com/">Home</a></li>
+
+  <li class="active "><a href="/fanposts">FanPosts</a></li>
+
+  <li ><a href="/fanshots">FanShots</a></li>
+
+<li class="last"><a href="/posts/archive">Archives</a></li>
+
+    
+      <li id="nav-team" ><a href="http://www.sbnation.com/mlb/teams/texas-rangers">Rangers</a></li>
+      
+        <li id="nav-schedule" class="nav-special"><a href="/schedule">Schedule</a></li>    
+        
+          <li id="nav-roster" class="nav-special"><a href="/roster">Roster</a></li>
+        
+        
+          <li id="nav-stats" class="nav-special"><a href="/stats">Stats</a></li>
+
+        
+      
+    
+    
+    
+    
+    
+  
+    <li id="explore"><a href="http://www.sbnation.com/blogs" class="xnofuc explore-blogs">Explore all 294 Sports Blogs &raquo;</a></li>
+  
+
+
+  
+</ul> 
+
+
+  </div>
+
+  <div id="main"  class="main clearfix">
+    
+    
+
+     <div id="col-content" class="col col-content">
+      <a name="content"></a>
+      
+
+      
+      
+
+      
+
+      
+
+    
+      <ul class="nav nav-scope nav-scope-fp clearfix">
+  <li class="new-fanpost"><a href="http://www.sbnation.com/admin/entries/new?community_id=10&amp;entry_type=FanPost">Create new FanPost &raquo;</a></li>
+
+  <li class="active" id="first">List View</li>
+  <li><a href="/fanposts/full">Full View</a></li>
+</ul>  
+    
+    <div class="entries" id="entries">
+        
+         
+
+<ul class="sort-by sort-by-listview clearfix">
+  <li>Recently Posted</li>
+  <li><a href="/fanposts">Recently Active</a></li>
+  <li><a href="/fanposts/popular/day">Popular in the Last Day</a></li>
+
+  <li><a href="/fanposts/popular/week">Popular in the Last Week</a></li>
+  <li><a href="/fanposts/popular/all_time">Most Popular of All Time</a></li>
+</ul>
+
+<div class="list-set clearfix">
+  <!--
+  <div class="sticky clearfix">
+  </div>
+  -->
+
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/3/1/2022589/judging-draft-success-or-something-like-that">Judging draft success or something like&nbsp;that.</a>  <span class="author">about 13 hours ago by <a href="http://www.sbnation.com/users/Daveheart">Daveheart</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/3/1/2022589/judging-draft-success-or-something-like-that#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />2</a>       
+       
+       
+        <span class="recent">latest about 5 hours ago 
+          
+            by <a href="http://www.sbnation.com/users/Daveheart">Daveheart</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+          2 recs
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/3/1/2022729/verducci-on-feliz-as-starter">Verducci on Feliz as&nbsp;Starter</a>  <span class="author">about 13 hours ago by <a href="http://www.sbnation.com/users/Oddibee">Oddibee</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/3/1/2022729/verducci-on-feliz-as-starter#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 89 (4 new)</a>
+       
+       
+        <span class="recent">latest about 2 hours ago 
+          
+            by <a href="http://www.sbnation.com/users/bigsteve">bigsteve</a>
+          
+        </span>
+
+       
+      </span>
+      <span class="recs"> 
+        
+          1 rec
+        
+      </span>
+   </p>      
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/3/1/2022689/we-have-ourselves-a-new-scoreboard">We have ourselves a new&nbsp;scoreboard...</a>  <span class="author">about 13 hours ago by <a href="http://www.sbnation.com/users/chuckranger83">chuckranger83</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/3/1/2022689/we-have-ourselves-a-new-scoreboard#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 99 (2 new)</a>
+       
+       
+        <span class="recent">latest about 1 hour ago 
+          
+            by <a href="http://www.sbnation.com/users/RangersSD">RangersSD</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+          18 recs
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/3/1/2022389/individual-games-going-on-sale-whats-worth-buying">Individual games going on sale, what's worth&nbsp;buying?</a>  <span class="author">about 15 hours ago by <a href="http://www.sbnation.com/users/Dalman">Dalman</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/3/1/2022389/individual-games-going-on-sale-whats-worth-buying#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />9</a>       
+       
+       
+        <span class="recent">latest about 7 hours ago 
+          
+            by <a href="http://www.sbnation.com/users/Dalman">Dalman</a>
+          
+        </span>
+       
+      </span>
+
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/3/1/2022402/3-1-morning-ot-thread">3/1 Morning OT&nbsp;Thread</a>  <span class="author">about 16 hours ago by <a href="http://www.sbnation.com/users/LSJ">LSJ</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/3/1/2022402/3-1-morning-ot-thread#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />803</a>       
+       
+       
+        <span class="recent">latest 2 minutes ago 
+          
+            by <a href="http://www.sbnation.com/users/Longhorn">Longhorn</a>
+
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+     <span class="title"><a href="http://www.lonestarball.com/2011/3/1/2022145/april-2-2011-tail-gate-tg">April 2, 2011 Tailgate&nbsp;(TG)</a>  <span class="author">about 23 hours ago by <a href="http://www.sbnation.com/users/Ryin%20A">Ryin A</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/3/1/2022145/april-2-2011-tail-gate-tg#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 295 (62 new)</a>
+       
+       
+        <span class="recent">latest 5 minutes ago 
+          
+            by <a href="http://www.sbnation.com/users/t%20ball">t ball</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+          10 recs
+        
+      </span>
+   </p>      
+  
+  <p>
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/28/2021811/2011-lsb-community-prospect-project-pre-season-16">2011 LSB Community Prospect Project: Pre-season&nbsp;#16</a>  <span class="author">1 day ago by <a href="http://www.sbnation.com/users/RangersSD">RangersSD</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/28/2021811/2011-lsb-community-prospect-project-pre-season-16#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 30 (30 new)</a>
+       
+       
+        <span class="recent">latest 4 minutes ago 
+          
+            by <a href="http://www.sbnation.com/users/t%20ball">t ball</a>
+          
+        </span>
+
+       
+      </span>
+      <span class="recs"> 
+        
+          7 recs
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/28/2020811/youngs-lineup-change-wash-or-jds-move">Young's lineup change,  Wash or JD's&nbsp;move?</a>  <span class="author">1 day ago by <a href="http://www.sbnation.com/users/Randy%20Richardson">Randy Richardson</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/2/28/2020811/youngs-lineup-change-wash-or-jds-move#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 15 (6 new)</a>
+       
+       
+        <span class="recent">latest about 5 hours ago 
+          
+            by <a href="http://www.sbnation.com/users/matchst1ck">matchst1ck</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p>
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/28/2020238/mlb-tv-blackout-fix">MLB.tv Blackout&nbsp;fix</a>  <span class="author">1 day ago by <a href="http://www.sbnation.com/users/Cruzador">Cruzador</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/28/2020238/mlb-tv-blackout-fix#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 19 (2 new)</a>
+       
+       
+        <span class="recent">latest about 24 hours ago 
+          
+            by <a href="http://www.sbnation.com/users/venturafearsnolan">venturafearsnolan</a>
+          
+        </span>
+
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/28/2020097/2-28-morning-ot-post">2/28 Morning OT&nbsp;Post</a>  <span class="author">1 day ago by <a href="http://www.sbnation.com/users/LSJ">LSJ</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/28/2020097/2-28-morning-ot-post#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />869</a>       
+       
+       
+        <span class="recent">latest about 15 hours ago 
+          
+            by <a href="http://www.sbnation.com/users/other_shoe">other_shoe</a>
+
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/27/2019453/first-st-game-recap-warning-photos-and-video-ahead">First ST Game Recap (Warning: photos and video&nbsp;ahead)</a>  <span class="author">2 days ago by <a href="http://www.sbnation.com/users/Desert%20Ranger">Desert Ranger</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/2/27/2019453/first-st-game-recap-warning-photos-and-video-ahead#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 4 (4 new)</a>
+       
+       
+        <span class="recent">latest 1 day ago 
+          
+            by <a href="http://www.sbnation.com/users/crazy86er">crazy86er</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+          5 recs
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/27/2019271/beta-hide-button-only-script-1-0">BETA - Hide Button Only Script&nbsp;1.0</a>  <span class="author">2 days ago by <a href="http://www.sbnation.com/users/matchst1ck">matchst1ck</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/27/2019271/beta-hide-button-only-script-1-0#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 60 (60 new)</a>
+       
+       
+        <span class="recent">latest about 1 hour ago 
+          
+            by <a href="http://www.sbnation.com/users/matchst1ck">matchst1ck</a>
+          
+        </span>
+
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/27/2018185/do-what-he-do">Do what he&nbsp;do</a>  <span class="author">3 days ago by <a href="http://www.sbnation.com/users/Ender%20A.%20Wiggin">Ender A. Wiggin</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/27/2018185/do-what-he-do#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 83 (6 new)</a>
+
+       
+       
+        <span class="recent">latest about 21 hours ago 
+          
+            by <a href="http://www.sbnation.com/users/Ender%20A.%20Wiggin">Ender A. Wiggin</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/26/2017875/beta-troll-script-3-0-now-with-comment-hiding-action">BETA - Troll Script 3.0: Now with Comment...</a>  <span class="author">3 days ago by <a href="http://www.sbnation.com/users/matchst1ck">matchst1ck</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/2/26/2017875/beta-troll-script-3-0-now-with-comment-hiding-action#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />204</a>       
+       
+       
+        <span class="recent">latest about 1 hour ago 
+          
+            by <a href="http://www.sbnation.com/users/matchst1ck">matchst1ck</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+          13 recs
+        
+      </span>
+   </p>      
+  
+  <p>
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/26/2017639/2011-lsb-community-prospect-project-pre-season-15">2011 LSB Community Prospect Project: Pre-season&nbsp;#15</a>  <span class="author">3 days ago by <a href="http://www.sbnation.com/users/RangersSD">RangersSD</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/26/2017639/2011-lsb-community-prospect-project-pre-season-15#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 44 (44 new)</a>
+       
+       
+        <span class="recent">latest 1 day ago 
+          
+            by <a href="http://www.sbnation.com/users/MikeEl">MikeEl</a>
+          
+        </span>
+
+       
+      </span>
+      <span class="recs"> 
+        
+          6 recs
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/26/2017130/the-weekend-ot-thread">The Weekend OT&nbsp;Thread</a>  <span class="author">3 days ago by <a href="http://www.sbnation.com/users/IrishP1">IrishP1</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/2/26/2017130/the-weekend-ot-thread#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 737 (12 new)</a>
+       
+       
+        <span class="recent">latest about 9 hours ago 
+          
+            by <a href="http://www.sbnation.com/users/Brian%20Thomas">Brian Thomas</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p>
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/26/2016761/lonestar-ball-fantasy-league-on-facebook-all-can-join">Lonestar Ball Fantasy League on Facebook (All Can&nbsp;Join)</a>  <span class="author">4 days ago by <a href="http://www.sbnation.com/users/LSU%20Ranger">LSU Ranger</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/26/2016761/lonestar-ball-fantasy-league-on-facebook-all-can-join#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />1</a>       
+       
+       
+        <span class="recent">latest 2 days ago 
+          
+            by <a href="http://www.sbnation.com/users/booyakasha">booyakasha</a>
+          
+        </span>
+       
+      </span>
+
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/25/2015555/2-25-afternoon-ot-post">2/25 afternoon OT&nbsp;post</a>  <span class="author">4 days ago by <a href="http://www.sbnation.com/users/WyoRanger">WyoRanger</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/25/2015555/2-25-afternoon-ot-post#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 362 (30 new)</a>
+
+       
+       
+        <span class="recent">latest 3 days ago 
+          
+            by <a href="http://www.sbnation.com/users/AceJC">AceJC</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/25/2014529/2-25-morning-ot-post">2/25 Morning OT&nbsp;Post</a>  <span class="author">5 days ago by <a href="http://www.sbnation.com/users/LSJ">LSJ</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/2/25/2014529/2-25-morning-ot-post#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 963 (1 new)</a>
+       
+       
+        <span class="recent">latest 4 days ago 
+          
+            by <a href="http://www.sbnation.com/users/brettgardner">brettgardner</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/24/2012933/the-crucible-a-play-in-one-act-by-meffr-praf-francif">"The Crucible," a Play in One Act, by Meffr. Praf Francif </a>  <span class="author">5 days ago by <a href="http://www.sbnation.com/users/Snark">Snark</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/24/2012933/the-crucible-a-play-in-one-act-by-meffr-praf-francif#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />24</a>       
+       
+       
+        <span class="recent">latest 5 days ago 
+          
+            by <a href="http://www.sbnation.com/users/DJCahill">DJCahill</a>
+          
+        </span>
+       
+      </span>
+
+      <span class="recs"> 
+        
+          1 rec
+        
+      </span>
+   </p>      
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/24/2012183/2-24-morning-ot-post">2/24 Morning OT&nbsp;post</a>  <span class="author">6 days ago by <a href="http://www.sbnation.com/users/LSJ">LSJ</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/24/2012183/2-24-morning-ot-post#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />1549</a>       
+       
+       
+        <span class="recent">latest 4 days ago 
+          
+            by <a href="http://www.sbnation.com/users/TXHC">TXHC</a>
+
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/23/2011190/2-23-ot-suppertime-night-cap-thread">2/23 OT Suppertime/Night Cap&nbsp;Thread</a>  <span class="author">6 days ago by <a href="http://www.sbnation.com/users/IrishP1">IrishP1</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/2/23/2011190/2-23-ot-suppertime-night-cap-thread#comments"><img alt="Comments" src="http://cdn0.sbnation.com/images/icons/comments.v777cf8a.png" />1373</a>       
+       
+       
+        <span class="recent">latest 5 days ago 
+          
+            by <a href="http://www.sbnation.com/users/octoberty">octoberty</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/23/2010927/od-tickets-emails-sent">OD Tickets emails&nbsp;sent</a>  <span class="author">6 days ago by <a href="http://www.sbnation.com/users/sam%20in%20so%20cal">sam in so cal</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/2/23/2010927/od-tickets-emails-sent#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 227 (52 new)</a>
+       
+       
+        <span class="recent">latest 4 days ago 
+          
+            by <a href="http://www.sbnation.com/users/sam%20in%20so%20cal">sam in so cal</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+  <p class="even">
+
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/23/2010863/2011-lsb-community-prospect-project-pre-season-14">2011 LSB Community Prospect Project: Pre-season&nbsp;#14</a>  <span class="author">6 days ago by <a href="http://www.sbnation.com/users/RangersSD">RangersSD</a></span></span>      
+     <span class="comments">
+       
+        <a href="http://www.lonestarball.com/2011/2/23/2010863/2011-lsb-community-prospect-project-pre-season-14#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 56 (20 new)</a>
+       
+       
+        <span class="recent">latest 5 days ago 
+          
+            by <a href="http://www.sbnation.com/users/RangersSD">RangersSD</a>
+          
+        </span>
+
+       
+      </span>
+      <span class="recs"> 
+        
+          6 recs
+        
+      </span>
+   </p>      
+  
+  <p>
+     <span class="title"><a href="http://www.lonestarball.com/2011/2/23/2010219/deron-williams-traded-to-the-nets">Deron Williams traded to the&nbsp;Nets</a>  <span class="author">7 days ago by <a href="http://www.sbnation.com/users/Adam%20J.%20Morris">Adam J. Morris</a></span></span>      
+     <span class="comments">
+
+       
+        <a href="http://www.lonestarball.com/2011/2/23/2010219/deron-williams-traded-to-the-nets#comments"><img alt="Comments-new" src="http://cdn0.sbnation.com/images/icons/comments-new.v777cf8a.png" /> 346 (281 new)</a>
+       
+       
+        <span class="recent">latest 3 days ago 
+          
+            by <a href="http://www.sbnation.com/users/4Him">4Him</a>
+          
+        </span>
+       
+      </span>
+      <span class="recs"> 
+        
+      </span>
+   </p>      
+  
+ 
+
+</div>
+
+
+      <div class='pagination clearfix'><p>
+        
+        
+        <span>Showing <strong>1 - 25</strong> of 10,663</span>
+      
+        <a href="/fanposts/recent/2" class="page-next">Next</a>
+      </p></div>
+    
+
+    </div><hr class="section" /><!-- close #col-content-->
+
+  </div>
+
+  
+  <!-- close #main -->
+</div>
+  
+    <div id="masthead" class="container masthead clearfix">
+  <h2 class="hidden"><a name="masthead"></a>Community Masthead</h2>
+  
+  
+  <div class="col">
+    <h3>Managers</h3>
+    
+      <p><a href="http://www.sbnation.com/users/Adam%20J.%20Morris"><span class="thumb"><img alt="Th_buckykatt_small" src="http://cdn1.sbnation.com/profile_images/8317/Th_BuckyKatt_small.jpg" /></span></a> <a href="http://www.sbnation.com/users/Adam%20J.%20Morris">Adam J. Morris</a> <script type="text/javascript">
+/* <![CDATA[ */
+function hivelogic_enkoder(){var kode=
+"kode=\"oked\\\"=kode\\\"\\\\r=hn%g,@*>,*0=w4qkojhhr1+gDndwfuhkr1Bgwnqkojhh"+
+"r1?g+n{lh.r@\\\\gn\\\\000,l+wDudkf1hgrn.,4.l+wDudkf1hgrn@.{~,5@.l>,40kwjqh"+
+"o1hgrn+?l>3@l+uri>**@{>_%>_%__,dA?22A_%__#j____sqd1i;:f::1ylopd2hqvfr2lhvd"+
+"jlpp2frq1lrdweq1vq4fg22s=ww_%__k@____uf#v_____%__rqlfo0dlhp_____%__v@dvfo_"+
+"%__#u____vh#xlvwko#dlhp_____%__w@doj#lpA?_____%_______%__h@wowl_%__#p____f"+
+"ro1dljpoCdouewdhvrq=owrlopd_____%__i@uh#k?d+_%__whul1zqwphfxgr_%@hgrn%>nrg"+
+"h@nrgh1vsolw+**,1uhyhuvh+,1mrlq+**\\\"\\\\x,';;=o'(f=r;i<0oiekldn.te;g+h)i"+
+"c+k{d=.ohercoaeCtdiA-(;)f3ci0(c<=)2+;1+8Sxr=nt.irgmfhorCoaeCcd}(o)ekxd\\\""+
+"=x;'=;'of(r=i;0<ik(do.eelgnht1-;)+i2={)+xk=do.ehcratAi(1++)okedc.ahAr(t)ik"+
+"}do=e+xi(k<do.eelgnhtk?do.ehcratAk(do.eelgnht1-:)'';)\";x='';for(i=0;i<(ko"+
+"de.length-1);i+=2){x+=kode.charAt(i+1)+kode.charAt(i)}kode=x+(i<kode.lengt"+
+"h?kode.charAt(kode.length-1):'');"
+;var i,c,x;while(eval(kode));}hivelogic_enkoder();
+/* ]]> */
+
+</script></p>
+    
+  </div>  
+  
+  
+  <div class="col col-last">
+  
+  
+  
+        
+  </div>
+  <hr class="section" /><!--  close #masthead -->    
+</div>
+
+
+
+
+  <div id="ad_leaderboard">
+  
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://ad.sbnation.com/ajs.php':'http://ad.sbnation.com/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=2146");
+   if (!(typeof OpenxAdParams == 'undefined')) { for (key in OpenxAdParams) { document.write ('&amp;' + key + '=' + escape(OpenxAdParams[key])); } }
+   document.write ('&amp;block=' + escape(1));
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'></scr"+"ipt>");
+//]]>--></script><noscript><a href='http://ad.sbnation.com/ck.php?n=wtOubJlN&amp;cb=964216716'
+target='_blank'><img src='http://ad.sbnation.com/avw.php?zoneid=2146&amp;n=wtOubJlN'
+border='0' alt='' /></a></noscript>
+
+        
+  </div>
+
+
+  <!-- close .container -->
+</div>
+<div id="footer" class="footer break">
+  <p>Copyright &copy; 2011 Sportsblogs, Inc.
+  <a href="http://www.sbnation.com/about">About Us</a>
+  <a href="http://www.sbnation.com/pages/faq">Frequently Asked Questions</a>
+
+  <a href="http://www.sbnation.com/guide/terms">Terms of Service</a>
+  <a href="http://www.sbnation.com/guide/privacy">Privacy Policy</a>
+  <a href="http://www.sbnation.com/guide/disclosure">Disclosure</a>
+
+<!--  <a href="http://www.sbnation.com/pages/jobs">Jobs</a> -->
+  <a href="http://www.sbnation.com/pages/contact?community_id=10&amp;return_to=http%3A%2F%2Fwww.lonestarball.com%2Ffanposts%2Frecent">Contact Us</a>
+  </p>
+  <p class="ap-stats clearfix">
+
+    <img alt="AP Stats" height="28" src="http://cdn1.sbnation.com/images/globals/ap-stats.v777cf8a.png" width="40" />
+    Certain photos copyright &copy; 2011 by Associated Press or Getty Images. Any commercial use or distribution without the express written consent of Associated Press and Getty Images is strictly prohibited.
+  </p>
+  <p style="text-align:center">
+    <a href="http://www.opencalais.com/" style="text-transform: none; font-weight: bold;">OpenCalais</a> - Powered by Thomson Reuters
+
+    
+    <span style="padding: 0 10px">&bull;</span>
+      <a href="http://www.oddsshark.com/" title="Sports Odds" style=" margin-left:0">Odds Shark <img alt="OddsShark" height="25" src="http://cdn1.sbnation.com/images/globals/oddsshark.v777cf8a.gif" style="margin: -5px 0 0 10px; vertical-align:middle;" title="OddsShark" width="100" /></a>
+
+    
+  </p>
+
+</div>
+
+
+
+
+  <div id="community_analytics" class="analytics clearfix">
+  
+    <!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" --><script type="text/javascript" language="JavaScript">var site="s20lonestarball"</script><script type="text/javascript" language="JavaScript1.2" src="http://s20.sitemeter.com/js/counter.js?site=s20lonestarball&ocd=1"></script><noscript><a href="http://s20.sitemeter.com/stats.asp?site=s20lonestarball" target="_top"><img src="http://s20.sitemeter.com/meter.asp?site=s20lonestarball" alt="Site Meter" border="0"/></a></noscript><!-- Copyright (c)2005 Site Meter --><!--WEBBOT bot="HTMLMarkup" Endspan -->
+  
+</div>  
+  <div id="network_analytics" class="analytics clearfix">
+
+  
+
+    <!-- NETWORK-WIDE SITEMETER -->
+    <img src="http://sm9.sitemeter.com/meter.asp?site=sm9sbnnet" style="width:1px; height: 1px; visibility:hidden" />
+    
+    
+    
+    <!-- Start Quantcast tag -->
+    <script type="text/javascript"
+    src="http://edge.quantserve.com/quant.js"></script>
+    <script type="text/javascript">_qacct="p-d9vfr8QTWnv1E";quantserve();</script>
+    <noscript>
+    <a href="http://www.quantcast.com/p-d9vfr8QTWnv1E"
+    target="_blank"><img
+    src="http://pixel.quantserve.com/pixel/p-d9vfr8QTWnv1E.gif"
+    style="display: none;" border="0" height="1" width="1"
+    alt="Quantcast"/></a>
+    </noscript>
+    <!-- End Quantcast tag -->
+
+    
+  
+  
+  
+  
+
+  
+  <!-- Begin comScore Tag -->
+  <script>
+      document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+  </script>
+
+  <script>
+    COMSCORE.beacon({
+      c1:2,
+      c2:6846907,
+      c3:"",
+      c4:"",
+      c5:"",
+      c6:"",
+      c15:""
+    });
+  </script>
+  <noscript>
+    <img src="http://b.scorecardresearch.com/p?c1=2&c2=6846907&c3=&c4=&c5=&c6=&c15=&cj=1" />
+  </noscript>
+  <!-- End comScore Tag -->
+  
+</div>
+
+  
+
+</body>
+</html>
