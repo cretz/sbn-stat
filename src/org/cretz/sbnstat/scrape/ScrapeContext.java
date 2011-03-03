@@ -16,6 +16,7 @@
 package org.cretz.sbnstat.scrape;
 
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,5 +62,8 @@ class ScrapeContext {
         }
         return user;
     }
-
+    
+    public Collection<User> getUsers() {
+        return users.values();
+    }
 }

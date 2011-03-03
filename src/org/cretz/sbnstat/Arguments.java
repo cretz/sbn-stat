@@ -29,7 +29,7 @@ public class Arguments {
     
     @Parameter(names = "-port",
             description = "The port number of the MySQL database. Default is 3306.")
-    private int databasePort;
+    private int databasePort = 3306;
     
     @Parameter(names = "-db", required = true,
             description = "The name of the MySQL database schema.")
@@ -55,6 +55,10 @@ public class Arguments {
     @Parameter(names = "-to", required = true, converter = DateConverter.class,
             description = "The inclusive date to end at in the format yyyy-mm-dd")
     private Date to;
+    
+    @Parameter(names = "-batchSize", 
+            description = "Number of users/comments to persist at once. Default is 500.")
+    private int batchSize = 500;
     
     @Parameter(names = "-out",
             description = "The output file to (over)write to if operation is 'gource' or 'svn'. " +
@@ -129,6 +133,14 @@ public class Arguments {
 
     public void setTo(Date to) {
         this.to = to;
+    }
+    
+    public int getBatchSize() {
+        return batchSize;
+    }
+    
+    public void setBatchSize(int batchSize) {
+        this.batchSize = batchSize;
     }
 
     public String getOut() {

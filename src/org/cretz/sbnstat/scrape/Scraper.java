@@ -15,8 +15,15 @@
  */
 package org.cretz.sbnstat.scrape;
 
+import java.util.Calendar;
+import java.util.List;
+
 import org.cretz.sbnstat.Arguments;
 import org.cretz.sbnstat.Operation;
+import org.cretz.sbnstat.dao.SbnStatDao;
+import org.cretz.sbnstat.dao.model.Comment;
+import org.cretz.sbnstat.dao.model.Post;
+import org.jsoup.Jsoup;
 
 public class Scraper implements Operation {
 
@@ -26,7 +33,49 @@ public class Scraper implements Operation {
     @Override
     public void run(Arguments args) {
         arguments = args;
-        
-        //TODO: this
+        //create a context
+        ScrapeContext context = new ScrapeContext(Calendar.getInstance(), Calendar.getInstance());
+        context.getFrom().setTime(args.getFrom());
+        context.getTo().setTime(args.getTo());
+        context.getTo().set(Calendar.HOUR_OF_DAY, 23);
+        context.getTo().set(Calendar.MINUTE, 59);
+        context.getTo().set(Calendar.SECOND, 59);
+        //population
+        try {
+            //populate the fan posts
+            PostLoader postLoader = new PostLoader(context);
+            String url = "http://www." + args.getDomain() + "/fanposts/recent";
+            do {
+                url = postLoader.populateFanPosts(Jsoup.connect(url).get());
+            } while (url != null);
+            //populate the fan shots
+            url = "http://www." + args.getDomain() + "/fanshots";
+            do {
+                url = postLoader.populateFanShots(Jsoup.connect(url).get());
+            } while (url != null);
+            //populate the front page stuff
+            int year = context.getTo().get(Calendar.YEAR) + 1;
+            do {
+                year--;
+            } while (postLoader.populateFrontPage(Jsoup.connect("http://www." + 
+                    args.getDomain() + "/stories/archive/" + year).get(), year));
+            //grab a DAO
+            SbnStatDao dao = new SbnStatDao(args);
+            //persist all the users
+            dao.persistUnpersistedUsers(context.getUsers(), args.getBatchSize());
+            //go post by post, grab comments and persist
+            CommentLoader commentLoader = new CommentLoader(context);
+            for (Post post : context.getPosts().values()) {
+                //get comments
+                List<Comment> comments = commentLoader.loadCommentsAndUpdatePost(
+                        Jsoup.connect(post.getUrl()).get(), post);
+                //persist post
+                dao.persistPost(post);
+                //persist comments
+                dao.persistComments(comments, args.getBatchSize());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

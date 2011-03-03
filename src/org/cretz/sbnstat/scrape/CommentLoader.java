@@ -29,7 +29,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class CommentLoader {
+class CommentLoader {
 
     //XXX: This removes thread safety from this class
     private final DateFormat dateFormat = new SimpleDateFormat(
@@ -78,22 +78,23 @@ public class CommentLoader {
         String id = citem.id();
         id = id.substring(id.lastIndexOf('_') + 1);
         comment.setSbnId(Long.parseLong(id));
+        Element commentDiv = citem.select("div.comment").first();
         //subject
-        Elements elements = citem.select("div.comment > h5.comment_title > a");
+        Elements elements = commentDiv.select("h5.comment_title > a");
         if (!elements.isEmpty()) {
             comment.setSubject(StringUtils.normalize(elements.first().ownText()));
         }
         //contents
-        elements = citem.select("div.comment > div.cbody > p");
+        elements = commentDiv.select("div.cbody > p");
         if (!elements.isEmpty()) {
             comment.setContents(elements.first().html());
         }
         //by
-        elements = citem.select("div.comment > p.by > a");
+        elements = commentDiv.select("p.by > a");
         comment.setUser(context.getUser(StringUtils.normalize(elements.first().ownText()), 
                 elements.first().attr("href")));
         //time
-        elements = citem.select("div.comment > p.by > span.time > a");
+        elements = commentDiv.select("p.by > span.time > a");
         try {
             comment.setDate(new Timestamp(dateFormat.parse(
                     StringUtils.normalize(elements.first().ownText().trim())).getTime()));
@@ -101,15 +102,17 @@ public class CommentLoader {
             throw new RuntimeException(e);
         }
         //recs
-        elements = citem.select("div.comment > p.by > span.cactions > span:not(.tools)");
+        elements = commentDiv.select("p.by > span.cactions > span:not(.tools)");
         if (!elements.isEmpty()) {
-            comment.setRecommendationCount(Integer.parseInt(StringUtils.normalize(
-                    elements.first().ownText()).replace("recs", "").trim()));
+            String recText = StringUtils.normalize(elements.first().ownText()).trim();
+            if (!recText.isEmpty()) {
+                comment.setRecommendationCount(Integer.parseInt(recText.replace("recs", "").trim()));   
+            }
         }
         //add to list
         comments.add(comment);
         //now all children
-        for (Element child : citem.select("div.citem")) {
+        for (Element child : citem.select(" > div.citem")) {
             recursivelyAddComments(child, comments, post, comment, 
                     topLevel == null ? comment : topLevel);
         }

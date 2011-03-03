@@ -32,12 +32,12 @@ public class PostUtilsTest {
         PostUtils.populateDateAndSbnIdFromUrl(post);
         Assert.assertEquals(new Timestamp(new GregorianCalendar(2011, Calendar.APRIL, 1).
                 getTimeInMillis()), post.getDate());
-        Assert.assertEquals(12345L, post.getId());
+        Assert.assertEquals(12345L, post.getSbnId());
         //try it w/ double digit month
         post.setUrl("http://mydomain.com/2010/10/15/12345/yankees-suck");
         PostUtils.populateDateAndSbnIdFromUrl(post);
         Assert.assertEquals(new Timestamp(new GregorianCalendar(2010, Calendar.OCTOBER, 15).
                 getTimeInMillis()), post.getDate());
-        Assert.assertEquals(12345L, post.getId());
+        Assert.assertEquals(12345L, post.getSbnId());
     }
 }

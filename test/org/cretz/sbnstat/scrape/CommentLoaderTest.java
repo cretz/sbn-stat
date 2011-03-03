@@ -18,14 +18,20 @@ package org.cretz.sbnstat.scrape;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
+import junit.framework.Assert;
+
+import org.cretz.sbnstat.dao.model.Comment;
 import org.cretz.sbnstat.dao.model.Post;
 import org.cretz.sbnstat.dao.model.PostType;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.junit.Test;
 
 public class CommentLoaderTest {
 
+    @Test
     public void testCommentLoaderOnFanShot() throws Exception {
         ScrapeContext context = new ScrapeContext(
                 new GregorianCalendar(2011, Calendar.FEBRUARY, 27), 
@@ -41,9 +47,36 @@ public class CommentLoaderTest {
         post.setUser(context.getUser("matchst1ckPuppet", 
                 "http://www.sbnation.com/users/matchst1ckPuppet"));
         //parse the local doc
-        @SuppressWarnings("unused")
-        Document doc = Jsoup.parse(PostLoaderTest.class.getResourceAsStream("recentPostList.html.txt"), 
+        Document doc = Jsoup.parse(PostLoaderTest.class.getResourceAsStream("fanShotComments.html.txt"), 
                 "UTF8", "http://www.lonestarball.com/fanposts/recent");
-        //TODO: finish this...
+        List<Comment> comments = new CommentLoader(context).loadCommentsAndUpdatePost(doc, post);
+        //make sure it's 182
+        Assert.assertEquals(182, comments.size());
+        //let's test some of the children... (better test this in CST!)
+        Comment comment = comments.get(0);
+        Assert.assertEquals(new Timestamp(new GregorianCalendar(2011, Calendar.FEBRUARY, 
+                27, 17, 10).getTimeInMillis()), comment.getDate());
+        Assert.assertEquals("matchst1ckPuppet", comment.getUser().getUsername());
+        Assert.assertEquals("Test 1", comment.getSubject());
+        Assert.assertEquals(0, comment.getDepth());
+        Assert.assertEquals(60227896L, comment.getSbnId());
+        Assert.assertEquals(1, comment.getRecommendationCount());
+        Assert.assertEquals(null, comment.getContents());
+        //find the one entitled "Dumb?"
+        comment = null;
+        for (Comment possible : comments) {
+            if ("Dumb?".equals(possible.getSubject())) {
+                comment = possible;
+                break;
+            }
+        }
+        Assert.assertNotNull(comment);
+        Assert.assertEquals("matchst1ck", comment.getUser().getUsername());
+        Assert.assertEquals(4, comment.getDepth());
+        Assert.assertEquals(60388513L, comment.getSbnId());
+        Assert.assertEquals(0, comment.getRecommendationCount());
+        Assert.assertEquals("tasatasd", comment.getContents());
+        Assert.assertEquals("Hmm.", comment.getParent().getSubject());
+        Assert.assertEquals(comments.get(0), comment.getTopLevelParent());
     }
 }
