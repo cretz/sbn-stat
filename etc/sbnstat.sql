@@ -71,7 +71,6 @@ CREATE TABLE `post` (
   `Date` datetime NOT NULL,
   `Title` varchar(200) DEFAULT NULL,
   `Url` varchar(200) NOT NULL,
-  `FrontPage` tinyint(1) NOT NULL,
   `RecommendationCount` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `SbnId_UNIQUE` (`SbnId`),
