@@ -15,12 +15,30 @@
  */
 package org.cretz.sbnstat;
 
+import java.sql.Driver;
+import java.sql.DriverManager;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 
 public class Main {
     
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+    
+    static {
+        try {
+            //register the driver
+            DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
     public static void main(String[] args) {
+        logger.debug("Beginning application");
         Arguments arguments = new Arguments();
         JCommander cmd = new JCommander(arguments);
         if (args == null || args.length == 0 || "-help".equals(args[0])) {
@@ -31,7 +49,22 @@ public class Main {
             cmd.parse(args);
         } catch (ParameterException e) {
             System.out.println(e.getMessage() + " (use -help to see options)");
+            System.exit(1);
             return;
         }
+        try {
+            run(arguments);
+        } catch (Exception e) {
+            logger.error("Error during execution", e);
+            System.exit(1);
+        }
+    }
+    
+    public static void run(Arguments arguments) {
+        logger.debug("Running operation {}", arguments.getOperation());
+        arguments.getOperation().run(arguments);
+    }
+    
+    private Main() {
     }
 }

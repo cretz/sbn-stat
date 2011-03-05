@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    
+    <entry key="User.Insert">
+        INSERT INTO User (Username, Url)
+        VALUES (?, ?)
+    </entry>
+    
+    <entry key="Post.Insert">
+        INSERT INTO Post (SbnId, UserId, Type, Date, Title, Url, RecommendationCount)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    </entry>
+    
+    <entry key="Comment.Insert">
+        INSERT INTO Comment (
+            SbnId,
+            ParentId,
+            TopLevelParentId,
+            UserId,
+            PostId,
+            Depth,
+            Subject,
+            Contents,
+            RecommendationCount,
+            Date
+        ) VALUES (
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?,
+            ?
+        )
+    </entry>
+    
+</properties>

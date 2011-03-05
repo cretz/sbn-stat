@@ -22,8 +22,7 @@ public class Gourcer implements Operation {
 
     @Override
     public void run(Arguments args) {
-        // TODO Auto-generated method stub
-        
+        throw new UnsupportedOperationException();
     }
 
 }

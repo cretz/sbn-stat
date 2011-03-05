@@ -15,126 +15,131 @@
  */
 package org.cretz.sbnstat.dao;
 
-import java.io.InputStreamReader;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
 import java.util.Collection;
-import java.util.List;
+import java.util.Properties;
 
-import javax.sql.DataSource;
-
-import org.apache.ibatis.mapping.Environment;
-import org.apache.ibatis.session.ExecutorType;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
-import org.cretz.sbnstat.Arguments;
 import org.cretz.sbnstat.dao.model.Comment;
 import org.cretz.sbnstat.dao.model.Post;
 import org.cretz.sbnstat.dao.model.User;
 
 public class SbnStatDao {
-
-    private final SqlSessionFactory sessionFactory;
     
-    private static final void closeQuietly(SqlSession session) {
-        if (session != null) {
-            try { session.close(); } catch (Exception e) { }
-        }
-    }
+    private static final Properties queries = new Properties();
     
-    public SbnStatDao(Arguments arguments) {
-        //register the driver
+    static {
         try {
-            DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
+            //load the properties
+            queries.loadFromXML(SbnStatDao.class.getResourceAsStream("queries.xml"));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        //build the session factory
-        sessionFactory = new SqlSessionFactoryBuilder().build(new InputStreamReader(
-                getClass().getResourceAsStream("sql-map-config.xml")));
-        DataSource ds;
-        try {
-            ds = (DataSource) Class.forName(
-                    "com.mysql.jdbc.jdbc2.optional.MysqlDataSource").newInstance();
-            ds.getClass().getMethod("setServerName").invoke(ds, arguments.getDatabaseHost());
-            ds.getClass().getMethod("setPort").invoke(ds, arguments.getDatabasePort());
-            ds.getClass().getMethod("setDatabaseName").invoke(ds, arguments.getDatabaseName());
-            ds.getClass().getMethod("setUser").invoke(ds, arguments.getDatabaseUser());
-            ds.getClass().getMethod("setPassword").invoke(ds, arguments.getDatabasePass());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        Environment environ = new Environment("production", 
-                new JdbcTransactionFactory(), ds);
-        sessionFactory.getConfiguration().setEnvironment(environ);
     }
     
-    public void persistUnpersistedUsers(Collection<User> users, int batchSize) {
-        List<User> userBatch = new ArrayList<User>(batchSize);
-        for (User user : users) {
-            if (user.getId() == null) {
-                userBatch.add(user);
-                if (userBatch.size() == batchSize) {
-                    persistUsers(userBatch);
-                    userBatch.clear();
-                }
-            }
-        }
-        if (!userBatch.isEmpty()) {
-            persistUsers(userBatch);
+    private static final void closeQuietly(Statement statement) {
+        if (statement != null) {
+            try { statement.close(); } catch (Exception e) { }
         }
     }
     
-    private void persistUsers(Collection<User> users) {
-        SqlSession session = sessionFactory.openSession(ExecutorType.BATCH);
+    private static final void closeQuietly(ResultSet resultSet) {
+        if (resultSet != null) {
+            try { resultSet.close(); } catch (Exception e) { }
+        }
+    }
+    
+    private final Connection conn;
+    
+    public SbnStatDao(Connection conn) {
+        this.conn = conn;
+    }
+    
+    public void persistUnpersistedUsers(Collection<User> users) throws SQLException {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         try {
+            stmt = conn.prepareStatement(queries.getProperty("User.Insert"), Statement.RETURN_GENERATED_KEYS);
             for (User user : users) {
                 if (user.getId() == null) {
-                    session.insert("SbnStat.insertUser", user);
+                    //Username, Url
+                    stmt.setString(1, user.getUsername());
+                    stmt.setString(2, user.getUrl());
+                    stmt.executeUpdate();
+                    rs = stmt.getGeneratedKeys();
+                    rs.next();
+                    user.setId(rs.getLong(1));
+                    rs.close();
                 }
             }
-            session.commit();
         } finally {
-            closeQuietly(session);
+            closeQuietly(rs);
+            closeQuietly(stmt);
         }
     }
     
-    public void persistPost(Post post) {
-        SqlSession session = sessionFactory.openSession();
+    public void persistPost(Post post) throws SQLException {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         try {
-            session.insert("SbnStat.insertPost", post);
-            session.commit();
+            stmt = conn.prepareStatement(queries.getProperty("Post.Insert"), Statement.RETURN_GENERATED_KEYS);
+            //SbnId, UserId, Type, Date, Title, Url, RecommendationCount
+            stmt.setLong(1, post.getSbnId());
+            stmt.setLong(2, post.getUser().getId());
+            stmt.setInt(3, post.getType().ordinal());
+            stmt.setTimestamp(4, post.getDate());
+            stmt.setString(5, post.getTitle());
+            stmt.setString(6, post.getUrl());
+            stmt.setInt(7, post.getRecommendationCount());
+            stmt.executeUpdate();
+            rs = stmt.getGeneratedKeys();
+            rs.next();
+            post.setId(rs.getLong(1));
         } finally {
-            closeQuietly(session);
+            closeQuietly(rs);
+            closeQuietly(stmt);
         }
     }
     
-    public void persistComments(Collection<Comment> comments, int batchSize) {
-        List<Comment> commentBatch = new ArrayList<Comment>(batchSize);
-        for (Comment comment : comments) {
-            commentBatch.add(comment);
-            if (commentBatch.size() == batchSize) {
-                persistComments(commentBatch);
-                commentBatch.clear();
-            }
-        }
-        if (!commentBatch.isEmpty()) {
-            persistComments(commentBatch);
-        }
-    }
-    
-    private void persistComments(Collection<Comment> comments) {
-        SqlSession session = sessionFactory.openSession(ExecutorType.BATCH);
+    public void persistComments(Collection<Comment> comments) throws SQLException {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
         try {
+            stmt = conn.prepareStatement(queries.getProperty("Comment.Insert"), Statement.RETURN_GENERATED_KEYS);
             for (Comment comment : comments) {
-                session.insert("SbnStat.insertComment", comment);
+                //SbnId, ParentId, TopLevelParentId, UserId, PostId, Depth, Subject,
+                //  Contents, RecommendationCount, Date
+                stmt.setLong(1, comment.getSbnId());
+                if (comment.getParent() == null) {
+                    stmt.setNull(2, Types.BIGINT);
+                } else {
+                    stmt.setLong(2, comment.getParent().getId());
+                }
+                if (comment.getTopLevelParent() == null) {
+                    stmt.setNull(3, Types.BIGINT);
+                } else {
+                    stmt.setLong(3, comment.getTopLevelParent().getId());
+                }
+                stmt.setLong(4, comment.getUser().getId());
+                stmt.setLong(5, comment.getPost().getId());
+                stmt.setInt(6, comment.getDepth());
+                stmt.setString(7, comment.getSubject());
+                stmt.setString(8, comment.getContents());
+                stmt.setInt(9, comment.getRecommendationCount());
+                stmt.setTimestamp(10, comment.getDate());
+                stmt.executeUpdate();
+                rs = stmt.getGeneratedKeys();
+                rs.next();
+                comment.setId(rs.getLong(1));
+                rs.close();
             }
-            session.commit();
         } finally {
-            closeQuietly(session);
+            closeQuietly(rs);
+            closeQuietly(stmt);
         }
     }
 }
