@@ -93,6 +93,11 @@ class CommentLoader {
         elements = commentDiv.select("p.by > a");
         comment.setUser(context.getUser(StringUtils.normalize(elements.first().ownText()), 
                 elements.first().attr("href")));
+        //thumbnail
+        elements = commentDiv.select("a.pic > img");
+        if (!elements.isEmpty()) {
+            comment.getUser().setThumbnail(elements.first().attr("src"));
+        }
         //time
         elements = commentDiv.select("p.by > span.time > a");
         try {

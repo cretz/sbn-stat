@@ -69,8 +69,8 @@ CREATE TABLE `post` (
   `UserId` bigint(20) NOT NULL,
   `Type` smallint(6) NOT NULL,
   `Date` datetime NOT NULL,
-  `Title` varchar(200) DEFAULT NULL,
-  `Url` varchar(200) NOT NULL,
+  `Title` tinytext DEFAULT NULL,
+  `Url` varchar(255) NOT NULL,
   `RecommendationCount` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `SbnId_UNIQUE` (`SbnId`),
@@ -98,8 +98,9 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(60) NOT NULL,
-  `Url` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
+  `Url` varchar(255) NOT NULL,
+  `Thumbnail` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Username_UNIQUE` (`Username`),
   UNIQUE KEY `Url_UNIQUE` (`Url`)

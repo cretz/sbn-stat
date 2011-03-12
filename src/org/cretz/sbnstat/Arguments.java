@@ -61,6 +61,10 @@ public class Arguments {
             "This will output to stdout if not present.")
     private String out;
     
+    @Parameter(names = "-dir",
+            description = "The directory to put grabbed thumbnails images for when operation is 'gource'")
+    private String dir;
+    
     @Parameter(names = "-oper", required = true, converter = OperationTypeConverter.class,
             description = "Operation to perform. If 'scrape', this will put all scraped data in the database. " +
             "If 'gource', this will output a file that can be read by gource. " +
@@ -137,6 +141,14 @@ public class Arguments {
 
     public void setOut(String out) {
         this.out = out;
+    }
+    
+    public String getDir() {
+        return dir;
+    }
+    
+    public void setDir(String dir) {
+        this.dir = dir;
     }
 
     public OperationType getOperation() {

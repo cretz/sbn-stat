@@ -24,6 +24,8 @@ public class User implements Serializable {
     private Long id;
     private String username;
     private String url;
+    private String thumbnail;
+    private boolean thumbnailPersisted;
 
     public Long getId() {
         return id;
@@ -48,5 +50,20 @@ public class User implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
-
+    
+    public String getThumbnail() {
+        return thumbnail;
+    }
+    
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+    
+    public boolean isThumbnailPersisted() {
+        return thumbnailPersisted;
+    }
+    
+    public void setThumbnailPersisted(boolean thumbnailPersisted) {
+        this.thumbnailPersisted = thumbnailPersisted;
+    }
 }

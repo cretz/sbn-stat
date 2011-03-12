@@ -3,8 +3,13 @@
 <properties>
     
     <entry key="User.Insert">
-        INSERT INTO User (Username, Url)
-        VALUES (?, ?)
+        INSERT INTO User (Username, Url, Thumbnail)
+        VALUES (?, ?, ?)
+    </entry>
+    
+    <entry key="User.UpdateThumbnail">
+        UPDATE User SET Thumbnail = ?
+        WHERE Id = ?
     </entry>
     
     <entry key="Post.Insert">
@@ -36,6 +41,36 @@
             ?,
             ?
         )
+    </entry>
+    
+    <entry key="Comment.GetBetweenDates">
+        SELECT C.Depth,
+               C.Id,
+               C.Subject,
+               C.RecommendationCount,
+               C.Date,
+               CU.Username AS CommentUsername,
+               CU.Thumbnail AS CommentUserThumbnail,
+               P.Type AS PostType,
+               P.Date AS PostDate,
+               P.Title AS PostTitle,
+               P.Url AS PostUrl,
+               P.RecommendationCount,
+               PU.Username AS PostUsername,
+               PU.Thumbnail AS PostThumbnail,
+               PC.Id AS ParentId,
+               PC.Subject AS ParentSubject
+        FROM Comment C
+          JOIN User CU
+            ON CU.Id = C.UserId
+          JOIN Post P
+            ON P.Id = C.PostId
+          JOIN User PU
+            ON PU.Id = P.UserId
+          LEFT JOIN Comment PC
+            ON PC.Id = C.ParentId 
+        WHERE C.Date BETWEEN ? AND ?
+        ORDER BY C.Id
     </entry>
     
 </properties>

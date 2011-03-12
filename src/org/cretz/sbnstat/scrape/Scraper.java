@@ -15,8 +15,8 @@
  */
 package org.cretz.sbnstat.scrape;
 
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.Calendar;
 import java.util.List;
 
@@ -25,7 +25,10 @@ import org.cretz.sbnstat.Operation;
 import org.cretz.sbnstat.dao.SbnStatDao;
 import org.cretz.sbnstat.dao.model.Comment;
 import org.cretz.sbnstat.dao.model.Post;
+import org.cretz.sbnstat.util.DateUtils;
+import org.cretz.sbnstat.util.JdbcUtils;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,46 +36,53 @@ public class Scraper implements Operation {
     
     private static final Logger logger = LoggerFactory.getLogger(Scraper.class);
     
+    private static Document loadUrl(String url) throws IOException {
+        return Jsoup.connect(url).
+            //spoof user agent
+            userAgent("Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15 ( .NET CLR 3.5.30729; .NET4.0E)").
+            //timeout 10 seconds
+            timeout(10000).get();
+    }
+    
     @Override
     public void run(Arguments args) {
         //create a context
-        ScrapeContext context = new ScrapeContext(Calendar.getInstance(), Calendar.getInstance());
-        context.getFrom().setTime(args.getFrom());
-        context.getFrom().set(Calendar.HOUR_OF_DAY, 0);
-        context.getFrom().set(Calendar.MINUTE, 9);
-        context.getFrom().set(Calendar.SECOND, 0);
-        context.getTo().setTime(args.getTo());
-        context.getTo().set(Calendar.HOUR_OF_DAY, 23);
-        context.getTo().set(Calendar.MINUTE, 59);
-        context.getTo().set(Calendar.SECOND, 59);
-        logger.info("Scraping all posts and comments from {} to {}", context.getFrom(), context.getTo());
+        ScrapeContext context = new ScrapeContext(
+                DateUtils.toBeginningOfDayCalendar(args.getFrom()),
+                DateUtils.toEndOfDayCalendar(args.getTo()));
+        logger.info("Scraping all posts and comments from {} to {}", 
+                context.getFrom().getTime(), context.getTo().getTime());
         //population
         try {
             //populate the fan posts
             PostLoader postLoader = new PostLoader(context);
             String url = "http://www." + args.getDomain() + "/fanposts/recent";
             do {
-                logger.debug("Loading fanpost list from: {}", url);
-                url = postLoader.populateFanPosts(Jsoup.connect(url).get());
+                logger.debug("Waiting 3 seconds, then loading fanpost list from: {}", url);
+                Thread.sleep(3000);
+                url = postLoader.populateFanPosts(loadUrl(url));
             } while (url != null);
             //populate the fan shots
             url = "http://www." + args.getDomain() + "/fanshots";
             do {
-                logger.debug("Loading fanshot list from: {}", url);
-                url = postLoader.populateFanShots(Jsoup.connect(url).get());
+                logger.debug("Waiting 3 seconds, then loading fanshot list from: {}", url);
+                Thread.sleep(3000);
+                url = postLoader.populateFanShots(loadUrl(url));
             } while (url != null);
             //populate the front page stuff
             int year = context.getTo().get(Calendar.YEAR) + 1;
             do {
                 url = "http://www." + args.getDomain() + "/stories/archive/" + --year;
-                logger.debug("Loading frontpage post list from: {}", url);
-            } while (postLoader.populateFrontPage(Jsoup.connect(url).get(), year));
+                Thread.sleep(3000);
+                logger.debug("Waiting 3 seconds, then loading frontpage post list from: {}", url);
+            } while (postLoader.populateFrontPage(loadUrl(url), year));
             //build a connection
-            Connection conn = DriverManager.getConnection(new StringBuilder("jdbc:mysql://").
-                    append(args.getDatabaseHost()).append(':').
-                    append(args.getDatabasePort()).append('/').
-                    append(args.getDatabaseName()).toString(), 
-                    args.getDatabaseUser(), args.getDatabasePass());
+            Connection conn = JdbcUtils.connectToMySqlDatabase(
+                    args.getDatabaseHost(), 
+                    args.getDatabasePort(), 
+                    args.getDatabaseName(), 
+                    args.getDatabaseUser(), 
+                    args.getDatabasePass());
             try {
                 //grab a DAO
                 SbnStatDao dao = new SbnStatDao(conn);
@@ -82,10 +92,11 @@ public class Scraper implements Operation {
                 //go post by post, grab comments and persist
                 CommentLoader commentLoader = new CommentLoader(context);
                 for (Post post : context.getPosts().values()) {
-                    logger.debug("Getting comments from post {}", post.getUrl());
+                    logger.debug("Waiting 3 seconds, then getting comments from post {}", post.getUrl());
+                    Thread.sleep(3000);
                     //get comments
                     List<Comment> comments = commentLoader.loadCommentsAndUpdatePost(
-                            Jsoup.connect(post.getUrl()).get(), post);
+                            loadUrl(post.getUrl()), post);
                     //persist unpersisted users
                     dao.persistUnpersistedUsers(context.getUsers());
                     //persist post
@@ -95,7 +106,7 @@ public class Scraper implements Operation {
                     dao.persistComments(comments);
                 }
             } finally {
-                try { conn.close(); } catch (Exception e) { }
+                JdbcUtils.closeQuietly(conn);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

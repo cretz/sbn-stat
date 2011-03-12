@@ -20,13 +20,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.Collection;
 import java.util.Properties;
 
+import org.cretz.sbnstat.dao.CommentHandler.CommentInfo;
 import org.cretz.sbnstat.dao.model.Comment;
 import org.cretz.sbnstat.dao.model.Post;
 import org.cretz.sbnstat.dao.model.User;
+import org.cretz.sbnstat.util.JdbcUtils;
 
 public class SbnStatDao {
     
@@ -41,18 +44,6 @@ public class SbnStatDao {
         }
     }
     
-    private static final void closeQuietly(Statement statement) {
-        if (statement != null) {
-            try { statement.close(); } catch (Exception e) { }
-        }
-    }
-    
-    private static final void closeQuietly(ResultSet resultSet) {
-        if (resultSet != null) {
-            try { resultSet.close(); } catch (Exception e) { }
-        }
-    }
-    
     private final Connection conn;
     
     public SbnStatDao(Connection conn) {
@@ -61,24 +52,36 @@ public class SbnStatDao {
     
     public void persistUnpersistedUsers(Collection<User> users) throws SQLException {
         PreparedStatement stmt = null;
+        PreparedStatement thumbnailUpdateStmt = null;
         ResultSet rs = null;
         try {
             stmt = conn.prepareStatement(queries.getProperty("User.Insert"), Statement.RETURN_GENERATED_KEYS);
+            thumbnailUpdateStmt = conn.prepareStatement(queries.getProperty("User.UpdateThumbnail"));
             for (User user : users) {
                 if (user.getId() == null) {
-                    //Username, Url
+                    //Username, Url, Thumbnail
                     stmt.setString(1, user.getUsername());
                     stmt.setString(2, user.getUrl());
+                    stmt.setString(3, user.getThumbnail());
                     stmt.executeUpdate();
                     rs = stmt.getGeneratedKeys();
                     rs.next();
                     user.setId(rs.getLong(1));
                     rs.close();
+                    if (user.getThumbnail() != null) {
+                        user.setThumbnailPersisted(true);
+                    }
+                } else if (user.getThumbnail() != null && !user.isThumbnailPersisted()) {
+                    thumbnailUpdateStmt.setString(1, user.getThumbnail());
+                    thumbnailUpdateStmt.setLong(2, user.getId());
+                    thumbnailUpdateStmt.executeUpdate();
+                    user.setThumbnailPersisted(true);
                 }
             }
         } finally {
-            closeQuietly(rs);
-            closeQuietly(stmt);
+            JdbcUtils.closeQuietly(rs);
+            JdbcUtils.closeQuietly(thumbnailUpdateStmt);
+            JdbcUtils.closeQuietly(stmt);
         }
     }
     
@@ -100,8 +103,8 @@ public class SbnStatDao {
             rs.next();
             post.setId(rs.getLong(1));
         } finally {
-            closeQuietly(rs);
-            closeQuietly(stmt);
+            JdbcUtils.closeQuietly(rs);
+            JdbcUtils.closeQuietly(stmt);
         }
     }
     
@@ -138,8 +141,27 @@ public class SbnStatDao {
                 rs.close();
             }
         } finally {
-            closeQuietly(rs);
-            closeQuietly(stmt);
+            JdbcUtils.closeQuietly(rs);
+            JdbcUtils.closeQuietly(stmt);
+        }
+    }
+    
+    public void readComments(Timestamp from, Timestamp to, CommentHandler handler) throws Exception {
+        PreparedStatement stmt = null;
+        CommentInfo info = null;
+        try {
+            stmt = conn.prepareStatement(queries.getProperty("Comment.GetBetweenDates"));
+            stmt.setTimestamp(1, from);
+            stmt.setTimestamp(2, to);
+            info = new CommentInfo(stmt.executeQuery());
+            while (info.next()) {
+                handler.onComment(info);
+            }
+        } finally {
+            if (info != null) {
+                info.close();
+            }
+            JdbcUtils.closeQuietly(stmt);
         }
     }
 }

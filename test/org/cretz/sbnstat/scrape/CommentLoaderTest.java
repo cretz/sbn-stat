@@ -72,6 +72,8 @@ public class CommentLoaderTest {
         }
         Assert.assertNotNull(comment);
         Assert.assertEquals("matchst1ck", comment.getUser().getUsername());
+        Assert.assertEquals("http://cdn2.sbnation.com/profile_images/390208/Matchstick_small.jpg", 
+                comment.getUser().getThumbnail());
         Assert.assertEquals(4, comment.getDepth());
         Assert.assertEquals(60388513L, comment.getSbnId());
         Assert.assertEquals(0, comment.getRecommendationCount());
