@@ -28,9 +28,13 @@ import org.cretz.sbnstat.util.StringUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class CommentLoader {
 
+    private static final Logger logger = LoggerFactory.getLogger(CommentLoader.class);
+    
     //XXX: This removes thread safety from this class
     private final DateFormat dateFormat = new SimpleDateFormat(
             "MMM dd, yyyy hh:mm aa zzz");
@@ -90,9 +94,19 @@ class CommentLoader {
             comment.setContents(elements.first().html());
         }
         //by
-        elements = commentDiv.select("p.by > a");
-        comment.setUser(context.getUser(StringUtils.normalize(elements.first().ownText()), 
-                elements.first().attr("href")));
+        elements = commentDiv.select("p.by > *");
+        //sometimes users' URL's aren't there so we get skipping the first and last two
+        //  characters because it appears as "by yourmother on"
+        if ("a".equals(elements.first().nodeName())) {
+            comment.setUser(context.getUser(StringUtils.normalize(elements.first().ownText()), 
+                    elements.first().attr("href")));
+        } else {
+            elements = commentDiv.select("p.by");
+            String username = elements.first().ownText().trim();
+            logger.trace("Inactive user: {}", username);
+            comment.setUser(context.getUser(StringUtils.normalize(
+                    username.substring(2, username.length() - 4).trim()), null));
+        }
         //thumbnail
         elements = commentDiv.select("a.pic > img");
         if (!elements.isEmpty()) {

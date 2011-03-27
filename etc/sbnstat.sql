@@ -99,7 +99,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `Username` varchar(100) NOT NULL,
-  `Url` varchar(255) NOT NULL,
+  `Url` varchar(255) DEFAULT NULL,
   `Thumbnail` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Username_UNIQUE` (`Username`),

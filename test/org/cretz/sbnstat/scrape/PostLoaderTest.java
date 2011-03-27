@@ -99,7 +99,7 @@ public class PostLoaderTest {
         Document doc = Jsoup.parse(PostLoaderTest.class.getResourceAsStream("fanShotList.html.txt"), 
                 "UTF8", "http://www.lonestarball.com/fanshots");
         //run loader
-        String next = new PostLoader(context).populateFanShots(doc);
+        boolean next = new PostLoader(context).populateFanShots(doc);
         //count
         Assert.assertEquals(10, context.getPosts().size());
         //first post
@@ -132,7 +132,7 @@ public class PostLoaderTest {
                 "http://www.lonestarball.com/2011/2/27/2019667/epl-thread-time-to-cancel-soccer");
         Assert.assertNull(last.getTitle());
         //and next...
-        Assert.assertEquals("http://www.lonestarball.com/fanshots?page=2", next);
+        Assert.assertTrue(next);
         //let's try a version where we only get from march first
         context = new ScrapeContext(
                 new GregorianCalendar(2011, Calendar.MARCH, 1), 
@@ -142,7 +142,7 @@ public class PostLoaderTest {
         //count
         Assert.assertEquals(1, context.getPosts().size());
         //next
-        Assert.assertNull(next);
+        Assert.assertFalse(next);
         //let's try a version where we only get until feb 28
         context = new ScrapeContext(
                 new GregorianCalendar(2011, Calendar.JANUARY, 1), 
@@ -152,7 +152,7 @@ public class PostLoaderTest {
         //count
         Assert.assertEquals(9, context.getPosts().size());
         //next
-        Assert.assertEquals("http://www.lonestarball.com/fanshots?page=2", next);
+        Assert.assertTrue(next);
     }
     
     @Test

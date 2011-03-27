@@ -142,10 +142,16 @@ public class Gourcer implements Operation {
                     if (dir != null && comment.thumbnail != null) {
                         saveUserAvatar(dir, comment);
                     }
+                    String title;
+                    if (comment.post.title != null) {
+                        title = comment.post.title;
+                    } else {
+                        title = "";
+                    }
                     if (!processedPosts.contains(comment.post.url)) {
                         //add a post
                         lines.add(getGourceLine(comment.post.date, comment.post.username, 
-                                'A', "/" + comment.post.title.replace('/', ' ')));
+                                'A', "/" + title.replace('/', ' ')));
                         processedPosts.add(comment.post.url);
                     }
                     //make the parent string (bad performance)
@@ -157,7 +163,7 @@ public class Gourcer implements Operation {
                     }
                     lines.add(getGourceLine(comment.date, comment.username, 
                             comment.parent == null ? 'A' : 'M', 
-                            "/" + comment.post.title.replace('/', ' ') + path));
+                            "/" + title.replace('/', ' ') + path));
                 }
                 Collections.sort(lines);
                 for (String line : lines) {

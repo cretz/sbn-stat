@@ -26,7 +26,7 @@ public class StringUtils {
      */
     public static String normalize(String original) {
         //just replace non-breaking spaces w/ spaces for now
-        return original.replace((char) 160, (char) 32);
+        return original.replace((char) 160, (char) 32).trim();
     }
     
     private StringUtils() {

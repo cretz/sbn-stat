@@ -22,8 +22,12 @@ import org.cretz.sbnstat.util.StringUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class PostLoader {
+    
+    private static final Logger logger = LoggerFactory.getLogger(PostLoader.class);
     
     private final ScrapeContext context;
     
@@ -60,8 +64,21 @@ class PostLoader {
             post.setTitle(StringUtils.normalize(anchor.ownText()));
             //get the author
             Element authorAnchor = element.select("span.author > a").first();
-            post.setUser(context.getUser(StringUtils.normalize(authorAnchor.ownText()), 
-                    authorAnchor.attr("href")));
+            if (authorAnchor == null) {
+                //no anchor means it's a deleted user, 
+                //  so we grab the username after the first instance of "by"
+                authorAnchor = element.select("span.author").first();
+                if (authorAnchor == null) {
+                    logger.warn("Can't find author on post" + post.getUrl());
+                    continue;
+                }
+                String text = authorAnchor.ownText();
+                text = text.substring(text.indexOf("by") + 3).trim();
+                post.setUser(context.getUser(StringUtils.normalize(text), null));
+            } else {
+                post.setUser(context.getUser(StringUtils.normalize(authorAnchor.ownText()), 
+                        authorAnchor.attr("href")));
+            }
             context.getPosts().put(post.getUrl(), post);
         }
         //is there a "next"?
@@ -70,12 +87,11 @@ class PostLoader {
     }
     
     /**
-     * Returns the URL to continue with if this should continue or
-     * null if this should be considered finished.
+     * Returns true if there are more or false if this should be considered finished.
      * 
      * @return
      */
-    public String populateFanShots(Document allList) {
+    public boolean populateFanShots(Document allList) {
         //grab all the title elements
         Elements elements = allList.select("div.fanshot");
         //loop through and parse
@@ -92,7 +108,7 @@ class PostLoader {
             //too early?
             if (context.getFrom().getTimeInMillis() > post.getDate().getTime()) {
                 //get out
-                return null;
+                return false;
             }
             post.setType(PostType.FAN_SHOT);
             //not all of them have titles
@@ -102,13 +118,19 @@ class PostLoader {
             }
             //get the author
             Element authorAnchor = element.select("span.user-avatar > a").first();
-            post.setUser(context.getUser(StringUtils.normalize(authorAnchor.ownText()), 
-                    authorAnchor.attr("href")));
+            //if the user is inactive just grab the text and have a null URL
+            if (authorAnchor == null) {
+                authorAnchor = element.select("span.user-avatar").first();
+                post.setUser(context.getUser(StringUtils.normalize(authorAnchor.ownText()), null));
+            } else {
+                post.setUser(context.getUser(StringUtils.normalize(authorAnchor.ownText()), 
+                        authorAnchor.attr("href")));
+            }
             context.getPosts().put(post.getUrl(), post);
         }
         //is there a "next"?
         Elements nextAnchors = allList.select("a.page-next");
-        return nextAnchors.isEmpty() ? null : nextAnchors.first().attr("abs:href");
+        return !nextAnchors.isEmpty();
     }
     
     /**

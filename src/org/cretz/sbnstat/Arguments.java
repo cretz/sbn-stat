@@ -65,11 +65,19 @@ public class Arguments {
             description = "The directory to put grabbed thumbnails images for when operation is 'gource'")
     private String dir;
     
+    @Parameter(names = "-cacheDir",
+            description = "The directory to cache loaded pages when operation is 'scrape'")
+    private String cacheDir;
+    
     @Parameter(names = "-oper", required = true, converter = OperationTypeConverter.class,
             description = "Operation to perform. If 'scrape', this will put all scraped data in the database. " +
             "If 'gource', this will output a file that can be read by gource. " +
             "If 'svn', this will output a file that resembles an SVN log.")
     private OperationType operation;
+    
+    private Integer startPanPostPage;
+    
+    private Integer startFanShotPage;
 
     public String getDatabaseHost() {
         return databaseHost;
@@ -150,6 +158,14 @@ public class Arguments {
     public void setDir(String dir) {
         this.dir = dir;
     }
+    
+    public String getCacheDir() {
+        return cacheDir;
+    }
+    
+    public void setCacheDir(String cacheDir) {
+        this.cacheDir = cacheDir;
+    }
 
     public OperationType getOperation() {
         return operation;
@@ -157,5 +173,21 @@ public class Arguments {
 
     public void setOperation(OperationType operation) {
         this.operation = operation;
+    }
+    
+    public Integer getStartPanPostPage() {
+        return startPanPostPage;
+    }
+    
+    public void setStartPanPostPage(Integer startPanPostPage) {
+        this.startPanPostPage = startPanPostPage;
+    }
+    
+    public Integer getStartFanShotPage() {
+        return startFanShotPage;
+    }
+
+    public void setStartFanShotPage(Integer startFanShotPage) {
+        this.startFanShotPage = startFanShotPage;
     }
 }
