@@ -12,9 +12,20 @@
         WHERE Id = ?
     </entry>
     
+    <entry key="User.Get">
+        SELECT * FROM User
+    </entry>
+    
     <entry key="Post.Insert">
-        INSERT INTO Post (SbnId, UserId, Type, Date, Title, Url, RecommendationCount)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO Post (SbnId, UserId, Type, Date, Title, Url, RecommendationCount, CommentsLoaded)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    </entry>
+    
+    <entry key="Post.Get">
+        SELECT P.*, U.Username
+        FROM Post P
+          JOIN User U
+            ON U.Id = P.UserId
     </entry>
     
     <entry key="Comment.Insert">

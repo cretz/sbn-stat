@@ -35,26 +35,16 @@ CREATE TABLE `comment` (
   `RecommendationCount` int(11) NOT NULL,
   `Date` datetime NOT NULL,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `SbnId_UNIQUE` (`SbnId`),
   KEY `FK_Comment_User` (`UserId`),
   KEY `FK_Comment_Post` (`PostId`),
   KEY `FK_Comment_Comment` (`ParentId`),
   KEY `FK_Comment_Comment_TopLevel` (`TopLevelParentId`),
-  CONSTRAINT `FK_Comment_Comment_TopLevel` FOREIGN KEY (`TopLevelParentId`) REFERENCES `comment` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_Comment_Comment` FOREIGN KEY (`ParentId`) REFERENCES `comment` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Comment_Comment_TopLevel` FOREIGN KEY (`TopLevelParentId`) REFERENCES `comment` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_Comment_Post` FOREIGN KEY (`PostId`) REFERENCES `post` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_Comment_User` FOREIGN KEY (`UserId`) REFERENCES `user` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `comment`
---
-
-LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `post`
@@ -69,25 +59,16 @@ CREATE TABLE `post` (
   `UserId` bigint(20) NOT NULL,
   `Type` smallint(6) NOT NULL,
   `Date` datetime NOT NULL,
-  `Title` tinytext DEFAULT NULL,
+  `Title` tinytext,
   `Url` varchar(255) NOT NULL,
   `RecommendationCount` int(11) NOT NULL,
+  `CommentsLoaded` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `SbnId_UNIQUE` (`SbnId`),
   UNIQUE KEY `Url_UNIQUE` (`Url`),
   KEY `FK_Post_User` (`UserId`),
   CONSTRAINT `FK_Post_User` FOREIGN KEY (`UserId`) REFERENCES `user` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `post`
---
-
-LOCK TABLES `post` WRITE;
-/*!40000 ALTER TABLE `post` DISABLE KEYS */;
-/*!40000 ALTER TABLE `post` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -104,17 +85,8 @@ CREATE TABLE `user` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Username_UNIQUE` (`Username`),
   UNIQUE KEY `Url_UNIQUE` (`Url`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -124,5 +96,3 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2011-03-02 14:46:50

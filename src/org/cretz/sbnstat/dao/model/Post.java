@@ -30,6 +30,7 @@ public class Post implements Serializable {
     private String title;
     private String url;
     private int recommendationCount;
+    private boolean commentsLoaded;
 
     public long getId() {
         return id;
@@ -93,5 +94,13 @@ public class Post implements Serializable {
     
     public void setRecommendationCount(int recommendationCount) {
         this.recommendationCount = recommendationCount;
+    }
+    
+    public boolean isCommentsLoaded() {
+        return commentsLoaded;
+    }
+    
+    public void setCommentsLoaded(boolean commentsLoaded) {
+        this.commentsLoaded = commentsLoaded;
     }
 }

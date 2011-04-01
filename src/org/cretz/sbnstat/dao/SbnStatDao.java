@@ -23,15 +23,23 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import org.cretz.sbnstat.dao.CommentHandler.CommentInfo;
 import org.cretz.sbnstat.dao.model.Comment;
 import org.cretz.sbnstat.dao.model.Post;
+import org.cretz.sbnstat.dao.model.PostType;
 import org.cretz.sbnstat.dao.model.User;
 import org.cretz.sbnstat.util.JdbcUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SbnStatDao {
+    
+    @SuppressWarnings("unused")
+    private static final Logger logger = LoggerFactory.getLogger(SbnStatDao.class);
     
     private static final Properties queries = new Properties();
     
@@ -98,6 +106,7 @@ public class SbnStatDao {
             stmt.setString(5, post.getTitle());
             stmt.setString(6, post.getUrl());
             stmt.setInt(7, post.getRecommendationCount());
+            stmt.setBoolean(8, post.isCommentsLoaded());
             stmt.executeUpdate();
             rs = stmt.getGeneratedKeys();
             rs.next();
@@ -161,6 +170,56 @@ public class SbnStatDao {
             if (info != null) {
                 info.close();
             }
+            JdbcUtils.closeQuietly(stmt);
+        }
+    }
+    
+    public Map<String, User> getUsers() throws Exception {
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(queries.getProperty("User.Get"));
+            Map<String, User> users = new HashMap<String, User>();
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getLong("Id"));
+                user.setThumbnail(rs.getString("Thumbnail"));
+                user.setThumbnailPersisted(user.getThumbnail() != null);
+                user.setUrl(rs.getString("Url"));
+                user.setUsername(rs.getString("Username"));
+                users.put(user.getUsername().toLowerCase().trim(), user);
+            }
+            return users;
+        } finally {
+            JdbcUtils.closeQuietly(rs);
+            JdbcUtils.closeQuietly(stmt);
+        }
+    }
+    
+    public Map<String, Post> getPosts(Map<String, User> users) throws Exception {
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(queries.getProperty("Post.Get"));
+            Map<String, Post> posts = new HashMap<String, Post>();
+            while (rs.next()) {
+                Post post = new Post();
+                post.setCommentsLoaded(rs.getBoolean("CommentsLoaded"));
+                post.setDate(rs.getTimestamp("Date"));
+                post.setId(rs.getLong("Id"));
+                post.setRecommendationCount(rs.getInt("RecommendationCount"));
+                post.setSbnId(rs.getLong("SbnId"));
+                post.setTitle(rs.getString("Title"));
+                post.setType(PostType.values()[rs.getInt("Type")]);
+                post.setUrl(rs.getString("Url"));
+                post.setUser(users.get(rs.getString("Username")));
+                posts.put(post.getUrl(), post);
+            }
+            return posts;
+        } finally {
+            JdbcUtils.closeQuietly(rs);
             JdbcUtils.closeQuietly(stmt);
         }
     }

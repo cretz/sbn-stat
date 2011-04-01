@@ -4,7 +4,7 @@
 
         SELECT SbnId, Username, Url, Count
         FROM (
-          SELECT C.Id, U.Username, P.Url, COUNT(1) AS Count
+          SELECT C.SbnId, U.Username, P.Url, COUNT(1) AS Count
           FROM Comment C
             JOIN Post P
               ON P.Id = C.PostId
@@ -111,9 +111,25 @@
             JOIN Post PLast
               ON PLast.Id = CLast.PostId
           ) U
-        ORDER BY TimeDiff DESC LIMIT 20
+        ORDER BY TimeDiff DESC LIMIT 3
+        
+* C - CLen (Longest comment)
 
-## Overall
+        SELECT SbnId, Username, Url, SubjectCount + ContentsCount
+        FROM (
+          SELECT C.SbnId, U.Username, P.Url, 
+            CHAR_LENGTH(C.Subject) AS SubjectCount,
+            CHAR_LENGTH(C.Contents) AS ContentsCount
+          FROM Comment C
+            JOIN Post P
+              ON P.Id = C.PostId
+            JOIN User U
+              ON U.Id = C.UserId
+          GROUP BY C.SbnId, U.Username, P.Url
+          ) C
+        ORDER BY SubjectCount + ContentsCount DESC LIMIT 3
+
+## User Level
 
 * U - C (Comments for a user)
 
@@ -181,24 +197,6 @@
         WHERE Count > 0
         ORDER BY RecommendationCount / Count DESC LIMIT 3
 
-* Rec/C (Recs per comment)
-
-        SELECT RecommendationCount / Count
-        FROM (
-          SELECT COUNT(1) AS Count, 
-            SUM(C.RecommendationCount) AS RecommendationCount
-          FROM Comment C
-          ) C
-
-* Rec/P (Recs per post)
-
-        SELECT RecommendationCount / Count
-        FROM (
-          SELECT COUNT(1) AS Count, 
-            SUM(P.RecommendationCount) AS RecommendationCount
-          FROM Post P
-          ) P
-
 * U - F/C (fuck per comment for a user)
 
         SELECT Username, (SubjectCount + ContentsCount) / Count
@@ -234,6 +232,115 @@
           ) C
         WHERE Count > 0
         ORDER BY ReplyCount / Count DESC LIMIT 3
+        
+* U - CLen/C (Comment length per comment)
+
+        SELECT Username, (SubjectCount + ContentsCount) / Count
+        FROM (
+          SELECT U.Username, COUNT(1) AS Count,
+            SUM(CHAR_LENGTH(C.Subject)) AS SubjectCount,
+            SUM(CHAR_LENGTH(C.Contents)) AS ContentsCount
+          FROM Comment C
+            JOIN User U
+              ON U.Id = C.UserId
+          GROUP BY U.Username
+          ) C
+        WHERE Count > 0
+        ORDER BY (SubjectCount + ContentsCount) / Count DESC LIMIT 3
+
+* U - C - D (Most comments in a day for a user)
+
+        SELECT Username, Date, Count
+        FROM (
+          SELECT U.Username, DATE(C.Date) AS Date, COUNT(1) AS Count
+          FROM Comment C
+            JOIN User U
+              ON U.Id = C.UserId
+          GROUP BY U.Username, DATE(C.Date)
+          ) C
+        ORDER BY Count DESC LIMIT 3
+        
+## Site Level
+
+* C (Comments)
+        SELECT COUNT(1)
+        FROM Comment
+        
+* C - Y (Comments by year)
+
+        SELECT COUNT(1), YEAR(Date)
+        FROM Comment
+        GROUP BY YEAR(Date)
+        
+* C - Dw (Comments by day of week)
+
+        SELECT COUNT(1), WEEKDAY(Date)
+        FROM Comment
+        GROUP BY WEEKDAY(Date)
+        
+* C - H (Comments by hour of day)
+
+        SELECT COUNT(1), HOUR(Date)
+        FROM Comment
+        GROUP BY HOUR(Date)
+        
+* C - D (Most comments in a day)
+
+        SELECT Date, Count
+        FROM (
+          SELECT DATE(C.Date) AS Date, COUNT(1) AS Count
+          FROM Comment C
+          GROUP BY DATE(C.Date)
+          ) C
+        ORDER BY Count DESC LIMIT 3
+        
+* P (Posts)
+
+        SELECT COUNT(1)
+        FROM Post
+        
+* P - Fs (Fan shots)
+
+        SELECT COUNT(1)
+        FROM Post
+        WHERE Type = 1        
+
+* P - Fp (Fan posts)
+
+        SELECT COUNT(1)
+        FROM Post
+        WHERE Type = 0
+        
+* U (Users)
+        
+        SELECT COUNT(1)
+        FROM User
+        
+* Ua (Active users)
+        
+        SELECT COUNT(1)
+        FROM User
+        WHERE Url IS NOT NULL
+
+* Rec/C (Recs per comment)
+
+        SELECT RecommendationCount / Count
+        FROM (
+          SELECT COUNT(1) AS Count, 
+            SUM(C.RecommendationCount) AS RecommendationCount
+          FROM Comment C
+          ) C
+
+* Rec/P (Recs per post)
+
+        SELECT RecommendationCount / Count
+        FROM (
+          SELECT COUNT(1) AS Count, 
+            SUM(P.RecommendationCount) AS RecommendationCount
+          FROM Post P
+          ) P
+
+
 
 ## Uecker
 

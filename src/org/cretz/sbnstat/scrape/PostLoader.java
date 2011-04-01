@@ -48,7 +48,7 @@ class PostLoader {
         for (Element element : elements) {
             Element anchor = element.getElementsByTag("a").first();
             Post post = new Post();
-            post.setUrl(anchor.attr("href"));
+            post.setUrl(PostUtils.fixPostUrl(anchor.attr("href")));
             PostUtils.populateDateAndSbnIdFromUrl(post);
             //too late?
             if (context.getTo().getTimeInMillis() < post.getDate().getTime()) {
@@ -59,6 +59,10 @@ class PostLoader {
             if (context.getFrom().getTimeInMillis() > post.getDate().getTime()) {
                 //get out
                 return null;
+            }
+            //already there?
+            if (context.getPosts().containsKey(post.getUrl())) {
+                continue;
             }
             post.setType(PostType.FAN_POST);
             post.setTitle(StringUtils.normalize(anchor.ownText()));
@@ -98,7 +102,7 @@ class PostLoader {
         for (Element element : elements) {
             Element anchor = element.select("span.comments > a").first();
             Post post = new Post();
-            post.setUrl(anchor.attr("href").replace("#comments", ""));
+            post.setUrl(PostUtils.fixPostUrl(anchor.attr("href").replace("#comments", "")));
             PostUtils.populateDateAndSbnIdFromUrl(post);
             //too late?
             if (context.getTo().getTimeInMillis() < post.getDate().getTime()) {
@@ -109,6 +113,10 @@ class PostLoader {
             if (context.getFrom().getTimeInMillis() > post.getDate().getTime()) {
                 //get out
                 return false;
+            }
+            //already there?
+            if (context.getPosts().containsKey(post.getUrl())) {
+                continue;
             }
             post.setType(PostType.FAN_SHOT);
             //not all of them have titles
@@ -145,7 +153,7 @@ class PostLoader {
         for (Element element : elements) {
             Element anchor = element.select("h5 > a").first();
             Post post = new Post();
-            post.setUrl(anchor.attr("href"));
+            post.setUrl(PostUtils.fixPostUrl(anchor.attr("href")));
             PostUtils.populateDateAndSbnIdFromUrl(post);
             //too late?
             if (context.getTo().getTimeInMillis() < post.getDate().getTime()) {
@@ -156,6 +164,10 @@ class PostLoader {
             if (context.getFrom().getTimeInMillis() > post.getDate().getTime()) {
                 //get out
                 return false;
+            }
+            //already there?
+            if (context.getPosts().containsKey(post.getUrl())) {
+                continue;
             }
             post.setType(PostType.FRONT_PAGE);
             //not all of them have titles

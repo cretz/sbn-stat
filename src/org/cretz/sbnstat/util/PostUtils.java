@@ -53,6 +53,15 @@ public class PostUtils {
         post.setSbnId(id);
     }
     
+    public static String fixPostUrl(String url) {
+        //sometimes there are strange characters, and I just add them here as I go
+        return url.replace("Â", "").
+                replace("" + ((char) 160), "%C2%A0").
+                replace("â", "%E2").
+                replace("€", "%80").
+                replace("™", "%99");
+    }
+    
     private PostUtils() {
     }
 }

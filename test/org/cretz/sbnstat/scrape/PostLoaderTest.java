@@ -18,9 +18,11 @@ package org.cretz.sbnstat.scrape;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 
 import org.cretz.sbnstat.dao.model.Post;
 import org.cretz.sbnstat.dao.model.PostType;
+import org.cretz.sbnstat.dao.model.User;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Assert;
@@ -33,7 +35,8 @@ public class PostLoaderTest {
         //create context (feb to april)
         ScrapeContext context = new ScrapeContext(
                 new GregorianCalendar(2011, Calendar.FEBRUARY, 1), 
-                new GregorianCalendar(2011, Calendar.APRIL, 1));
+                new GregorianCalendar(2011, Calendar.APRIL, 1),
+                new HashMap<String, Post>(), new HashMap<String, User>());
         //parse the local doc
         Document doc = Jsoup.parse(PostLoaderTest.class.getResourceAsStream("recentPostList.html.txt"), 
                 "UTF8", "http://www.lonestarball.com/fanposts/recent");

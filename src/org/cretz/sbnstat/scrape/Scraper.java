@@ -18,9 +18,11 @@ package org.cretz.sbnstat.scrape;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.SocketTimeoutException;
 import java.sql.Connection;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -33,6 +35,7 @@ import org.cretz.sbnstat.Operation;
 import org.cretz.sbnstat.dao.SbnStatDao;
 import org.cretz.sbnstat.dao.model.Comment;
 import org.cretz.sbnstat.dao.model.Post;
+import org.cretz.sbnstat.dao.model.User;
 import org.cretz.sbnstat.util.DateUtils;
 import org.cretz.sbnstat.util.JdbcUtils;
 import org.jsoup.Jsoup;
@@ -48,14 +51,25 @@ public class Scraper implements Operation {
     
     @Override
     public void run(Arguments args) {
-        //create a context
-        ScrapeContext context = new ScrapeContext(
-                DateUtils.toBeginningOfDayCalendar(args.getFrom()),
-                DateUtils.toEndOfDayCalendar(args.getTo()));
-        logger.info("Scraping all posts and comments from {} to {}", 
-                context.getFrom().getTime(), context.getTo().getTime());
-        //population
+        //build a connection
+        Connection conn = null;
         try {
+            conn = JdbcUtils.connectToMySqlDatabase(
+                    args.getDatabaseHost(), 
+                    args.getDatabasePort(), 
+                    args.getDatabaseName(), 
+                    args.getDatabaseUser(), 
+                    args.getDatabasePass());
+            SbnStatDao dao = new SbnStatDao(conn);
+            //load users
+            Map<String, User> users = dao.getUsers();
+            //create a context
+            ScrapeContext context = new ScrapeContext(
+                    DateUtils.toBeginningOfDayCalendar(args.getFrom()),
+                    DateUtils.toEndOfDayCalendar(args.getTo()),
+                    dao.getPosts(users), users);
+            logger.info("Scraping all posts and comments from {} to {}", 
+                    context.getFrom().getTime(), context.getTo().getTime());
             //create cache if dir is there
             Cache cache = null;
             if (args.getCacheDir() != null) {
@@ -92,39 +106,48 @@ public class Scraper implements Operation {
                 url = "http://www." + args.getDomain() + "/stories/archive/" + --year;
                 logger.debug("Loading frontpage post list from: {}", url);
             } while (postLoader.populateFrontPage(loadUrl(url, cache), year));
-            //build a connection
-            Connection conn = JdbcUtils.connectToMySqlDatabase(
-                    args.getDatabaseHost(), 
-                    args.getDatabasePort(), 
-                    args.getDatabaseName(), 
-                    args.getDatabaseUser(), 
-                    args.getDatabasePass());
-            try {
-                //grab a DAO
-                SbnStatDao dao = new SbnStatDao(conn);
-                //persist all the users
-                logger.debug("Initial user persist of {} users", context.getUsers().size());
-                dao.persistUnpersistedUsers(context.getUsers());
-                //go post by post, grab comments and persist
-                CommentLoader commentLoader = new CommentLoader(context);
-                for (Post post : context.getPosts().values()) {
-                    logger.debug("Getting comments from post {}", post.getUrl());
-                    //get comments
-                    List<Comment> comments = commentLoader.loadCommentsAndUpdatePost(
-                            loadUrl(post.getUrl(), cache), post);
-                    //persist unpersisted users
-                    dao.persistUnpersistedUsers(context.getUsers());
-                    //persist post
-                    dao.persistPost(post);
-                    //persist comments
-                    logger.debug("Persisting {} comments", comments.size());
-                    dao.persistComments(comments);
+            //persist all the users
+            logger.debug("Initial user persist of {} users", context.getUsers().size());
+            dao.persistUnpersistedUsers(context.getUsers());
+            //go post by post, grab comments and persist
+            CommentLoader commentLoader = new CommentLoader(context);
+            logger.debug("Working {} posts", context.getPosts().size());
+            for (Post post : context.getPosts().values()) {
+                if (post.isCommentsLoaded()) {
+                    continue;
                 }
-            } finally {
-                JdbcUtils.closeQuietly(conn);
+                logger.debug("Getting comments from post {}", post.getUrl());
+                //get comments
+                List<Comment> comments = commentLoader.loadCommentsAndUpdatePost(
+                        loadUrl(post.getUrl(), cache), post);
+                post.setCommentsLoaded(true);
+                //persist unpersisted users
+                try {
+                    //transaction start
+                    conn.setAutoCommit(false);
+                    try {
+                        dao.persistUnpersistedUsers(context.getUsers());
+                        //persist post if not persisted
+                        if (post.getId() == 0) {
+                            dao.persistPost(post);
+                        }
+                        //persist comments
+                        logger.debug("Persisting {} comments", comments.size());
+                        dao.persistComments(comments);
+                        conn.commit();
+                        conn.setAutoCommit(true);
+                    } catch (Exception e) {
+                        conn.rollback();
+                        throw new Exception(e);
+                    }
+                } catch (Exception e) {
+                    logger.warn("Couldn't persist post: {}", post.getUrl(), e);
+                }
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
+        } finally {
+            JdbcUtils.closeQuietly(conn);
         }
     }
     
@@ -135,17 +158,26 @@ public class Scraper implements Operation {
         }
         if (html == null) {
             //wait three seconds...
-            logger.debug("Waiting three seconds...");
+            logger.debug("Waiting 3 seconds...");
             Thread.sleep(3000);
             //get HTML from URL
             HttpClient httpClient = new DefaultHttpClient();
-            HttpConnectionParams.setConnectionTimeout(httpClient.getParams(), 10000);
-            HttpConnectionParams.setSoTimeout(httpClient.getParams(), 10000);
+            HttpConnectionParams.setConnectionTimeout(httpClient.getParams(), 20000);
+            HttpConnectionParams.setSoTimeout(httpClient.getParams(), 20000);
             HttpGet get = new HttpGet(url);
             //spoof user agent
             get.setHeader("User-Agent", 
                     "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2.15) Gecko/20110303 Firefox/3.6.15 ( .NET CLR 3.5.30729; .NET4.0E)");
-            HttpResponse response = httpClient.execute(get);
+            HttpResponse response;
+            try {
+                response = httpClient.execute(get);
+            } catch (SocketTimeoutException e) {
+                //we timed out, wait
+                logger.info("Timed out waiting for {}, will restart in 2 minutes", url);
+                Thread.sleep(120000);
+                return loadUrl(url, cache);
+            }
+            //SocketTimeoutException above
             if (response.getStatusLine().getStatusCode() != 200) {
                 throw new RuntimeException("Unable to load URL " + url +
                         ", received code " + response.getStatusLine().getStatusCode() +

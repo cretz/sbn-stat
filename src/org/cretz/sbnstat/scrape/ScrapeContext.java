@@ -28,16 +28,23 @@ import org.cretz.sbnstat.dao.model.User;
  * 
  * @author Chad Retz
  */
-class ScrapeContext {
+public class ScrapeContext {
 
     private final Calendar from;
     private final Calendar to;
-    private final Map<String, Post> posts = new HashMap<String, Post>();
-    private final Map<String, User> users = new HashMap<String, User>();
+    private final Map<String, Post> posts;
+    private final Map<String, User> users;
     
     public ScrapeContext(Calendar from, Calendar to) {
+        this(from, to, new HashMap<String, Post>(), new HashMap<String, User>());
+    }
+    
+    public ScrapeContext(Calendar from, Calendar to, 
+            Map<String, Post> posts, Map<String, User> users) {
         this.from = from;
         this.to = to;
+        this.posts = posts;
+        this.users = users;
     }
     
     public Calendar getFrom() {
@@ -53,12 +60,12 @@ class ScrapeContext {
     }
     
     public User getUser(String username, String url) {
-        User user = users.get(username);
+        User user = users.get(username.toLowerCase().trim());
         if (user == null) {
             user = new User();
             user.setUrl(url);
             user.setUsername(username);
-            users.put(username, user);
+            users.put(username.toLowerCase().trim(), user);
         }
         return user;
     }
